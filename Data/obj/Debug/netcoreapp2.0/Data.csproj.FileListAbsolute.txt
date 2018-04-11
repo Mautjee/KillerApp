@@ -1,0 +1,4 @@
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\Data.csprojResolveAssemblyReference.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\Data.AssemblyInfoInputs.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\Data.AssemblyInfo.cs

@@ -1,0 +1,15 @@
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\bin\Debug\BackEndOpzet.exe.config
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\bin\Debug\BackEndOpzet.exe
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\bin\Debug\BackEndOpzet.pdb
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.csprojResolveAssemblyReference.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\MainWindow.g.cs
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\App.g.cs
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet_MarkupCompile.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet_MarkupCompile.lref
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\MainWindow.baml
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.g.resources
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.Properties.Resources.resources
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.csproj.GenerateResource.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.csproj.CoreCompileInputs.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.exe
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\BackEndOpzet\obj\Debug\BackEndOpzet.pdb

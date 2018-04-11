@@ -1,0 +1,28 @@
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Logic.deps.json
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Logic.dll
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Logic.pdb
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Data.dll
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Data.pdb
+Z:\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.csprojResolveAssemblyReference.cache
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.csproj.CoreCompileInputs.cache
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.AssemblyInfoInputs.cache
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.AssemblyInfo.cs
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.csproj.CopyComplete
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.dll
+Z:\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.csproj.CoreCompileInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.AssemblyInfoInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.AssemblyInfo.cs
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Logic.deps.json
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Logic.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Logic.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Data.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Data.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.csprojResolveAssemblyReference.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.csproj.CopyComplete
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\KillerApp.Logic.pdb

@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "KillerApp.Logic/1.0.0": {
+        "dependencies": {
+          "KillerApp.Data": "1.0.0",
+          "KillerApp.Model": "1.0.0"
+        },
+        "runtime": {
+          "KillerApp.Logic.dll": {}
+        }
+      },
+      "KillerApp.Data/1.0.0": {
+        "dependencies": {
+          "KillerApp.Model": "1.0.0"
+        },
+        "runtime": {
+          "KillerApp.Data.dll": {}
+        }
+      },
+      "KillerApp.Model/1.0.0": {
+        "runtime": {
+          "KillerApp.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "KillerApp.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "KillerApp.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "KillerApp.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

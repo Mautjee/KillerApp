@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "KillerApp.Data/1.0.0": {
+        "dependencies": {
+          "KillerApp.Model": "1.0.0",
+          "System.Data.SqlClient": "4.2.0.2"
+        },
+        "runtime": {
+          "KillerApp.Data.dll": {}
+        }
+      },
+      "KillerApp.Model/1.0.0": {
+        "runtime": {
+          "KillerApp.Model.dll": {}
+        }
+      },
+      "System.Data.SqlClient/4.2.0.2": {
+        "runtime": {
+          "System.Data.SqlClient.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "KillerApp.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "KillerApp.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.SqlClient/4.2.0.2": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

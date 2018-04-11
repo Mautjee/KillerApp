@@ -1,0 +1,16 @@
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.csproj.CoreCompileInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.AssemblyInfoInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.AssemblyInfo.cs
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Factory.deps.json
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Factory.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Factory.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Data.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Logic.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Data.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Logic.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.csprojResolveAssemblyReference.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.csproj.CopyComplete
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Factory\obj\Debug\netcoreapp2.0\KillerApp.Factory.pdb

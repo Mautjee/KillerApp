@@ -1,0 +1,26 @@
+Z:\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Data.deps.json
+Z:\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Data.dll
+Z:\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Data.pdb
+Z:\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+Z:\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csprojResolveAssemblyReference.cache
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csproj.CoreCompileInputs.cache
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.AssemblyInfoInputs.cache
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.AssemblyInfo.cs
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csproj.CopyComplete
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.dll
+Z:\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csprojResolveAssemblyReference.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.AssemblyInfoInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.AssemblyInfo.cs
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Data.deps.json
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Data.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Data.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\System.Data.SqlClient.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\System.Data.SqlClient.xml
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csproj.CopyComplete
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.pdb

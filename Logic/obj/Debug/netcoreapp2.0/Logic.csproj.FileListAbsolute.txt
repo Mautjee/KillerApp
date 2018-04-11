@@ -1,0 +1,9 @@
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\Logic.deps.json
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\Logic.dll
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\bin\Debug\netcoreapp2.0\Logic.pdb
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\Logic.csprojResolveAssemblyReference.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\Logic.csproj.CoreCompileInputs.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\Logic.AssemblyInfoInputs.cache
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\Logic.AssemblyInfo.cs
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\Logic.dll
+C:\Users\Mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Logic\obj\Debug\netcoreapp2.0\Logic.pdb

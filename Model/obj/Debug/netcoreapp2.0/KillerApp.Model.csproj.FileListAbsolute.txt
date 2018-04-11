@@ -1,0 +1,18 @@
+Z:\Semester 2\Software\BackEndOpzet\Model\bin\Debug\netcoreapp2.0\KillerApp.Model.deps.json
+Z:\Semester 2\Software\BackEndOpzet\Model\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+Z:\Semester 2\Software\BackEndOpzet\Model\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+Z:\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.csprojResolveAssemblyReference.cache
+Z:\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.csproj.CoreCompileInputs.cache
+Z:\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.AssemblyInfoInputs.cache
+Z:\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.AssemblyInfo.cs
+Z:\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.dll
+Z:\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\bin\Debug\netcoreapp2.0\KillerApp.Model.deps.json
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\bin\Debug\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\bin\Debug\netcoreapp2.0\KillerApp.Model.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.csprojResolveAssemblyReference.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.csproj.CoreCompileInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.AssemblyInfoInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.AssemblyInfo.cs
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Model\obj\Debug\netcoreapp2.0\KillerApp.Model.pdb
