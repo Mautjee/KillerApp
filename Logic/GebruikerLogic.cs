@@ -14,19 +14,24 @@ namespace Logic
             _gebruikerRepo = gebruikersrepo;
         }
 
+        public QueryFeedback AddGebruiker(Gebruiker gebruiker)
+        {
+            return _gebruikerRepo.AddGebruiker(gebruiker);
+        }
+
         public List<Gebruiker> GetAllGebruikers()
         {
            return  _gebruikerRepo.GetAllGebruikers();
         }
 
-        public bool LogtIn(string Gebruikersnaam, string Wachtwoord)
+        public Gebruiker GetbyID(int id)
         {
-            throw new NotImplementedException();
+            return _gebruikerRepo.GetbyID(id);
         }
 
-        public bool MaaktNieuwStudentenuis(StudentenHuis studentenhuis)
+        public QueryFeedback updateGebruiker(Gebruiker gebruiker)
         {
-            throw new NotImplementedException();
+            return _gebruikerRepo.updateGebruiker(gebruiker);
         }
     }
 }

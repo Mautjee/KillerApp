@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using Model;
 
+
 namespace Data.Interfaces
 {
     public interface IGebruikerContext
     {
-        List<Gebruiker> GetAllGebruiks();
+        List<Gebruiker> GetAllGebruikers();
+        Gebruiker GetbyID(int id);
+        QueryFeedback AddGebruiker(Gebruiker gebruiker);
+        QueryFeedback updateGebruiker(Gebruiker gebruiker);
     }
 }

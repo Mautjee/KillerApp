@@ -7,7 +7,7 @@ using Model;
 
 namespace Data.Repositories
 {
-    public class GebruikerRepository
+    public class GebruikerRepository : IGebruikerContext
     {
         readonly IGebruikerContext _gebruikerContext;
 
@@ -16,10 +16,25 @@ namespace Data.Repositories
             _gebruikerContext = gebruikercontext;
         }
 
+        public QueryFeedback AddGebruiker(Gebruiker gebruiker)
+        {
+           return _gebruikerContext.AddGebruiker(gebruiker);
+        }
 
         public List<Gebruiker> GetAllGebruikers()
         {
-            return _gebruikerContext.GetAllGebruiks();
+            return _gebruikerContext.GetAllGebruikers();
+        }
+
+
+        public Gebruiker GetbyID(int id)
+        {
+            return _gebruikerContext.GetbyID(id);
+        }
+
+        public QueryFeedback updateGebruiker(Gebruiker gebruiker)
+        {
+            return _gebruikerContext.updateGebruiker(gebruiker);
         }
     }
 }

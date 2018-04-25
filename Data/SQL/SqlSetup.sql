@@ -1,4 +1,4 @@
-﻿INSERT INTO Table_Gebruiker VALUES ('2','Johnnie','Geheim','John','Doe','1990-05-12',0635248735,'man','john@doe.com'),
+﻿INSERT INTO Table_Gebruiker VALUES (NewID(),'Johnnie','Geheim','John','Doe','1990-05-12',0635248735,'man','john@doe.com'),
 ('3','JaneDoe','Geheim','Jane','Doe','1995-07-21',0673526374,'vrouw','jane@doe.com'),('4','Saladje','Geheim','Johma','Oet Twente','1996-08-15',0625372539,'Vrouw','saladje@johma.com')
 
 USE [Mauro_SQL];
@@ -9,3 +9,10 @@ alter table Table_Gebruiker add Geslacht int
 alter table Table_Gebruiker drop column Geslacht
 
 INSERT INTO Table_Gebruiker(Geslacht) VALUES (1);
+
+Select * FROM Table_Gebruiker WHERE GebruikerID = 1;
+
+INSERT INTO Table_Gebruiker(Gebruikersnaam,Wachtwoord,Voornaam,Achternaam,Geboortedatum,MobielNummer,MailAdress,StudentenHuis,Geslacht)
+Values ('Bakje','Geheim','Bak','Doosje','1995-07-21',0623736402,'jane@doe.com',0,1);
+
+UPDATE Table_Gebruiker SET Gebruikersnaam = 'Muatjee'  WHERE GebruikerID = 1;
