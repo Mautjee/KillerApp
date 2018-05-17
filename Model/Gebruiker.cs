@@ -6,45 +6,50 @@ namespace Model
 {
     public class Gebruiker
     {
-
-        public int GebruikerID { get; set; }
+      
+        public int GebruikerID { get;}
 
         public string Gebruikersnaam { get; set; }
 
         private string _wachtwoord;
-        public string Wachtwoord { get; set; }
+        public string Wachtwoord { get; }
 
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
         public DateTime Gebortendatum { get; set; }
-        public String Mobielnummer { get; set; }
+        public string Mobielnummer { get; set; }
         public Geslacht hetGeslacht { get; set; }
         public string Email { get; set; }
 
         public int StudentenhuisID { get; set; }
 
 
-        public Gebruiker(int gebruikerid, string gebruikernaam, string wachtwoord, string voornaam,
-            string achternaam, DateTime geboortedatum, string mobielnummer, Geslacht geslacht, string email){
+        public Gebruiker(string gebruikernaam, string voornaam,
+            string achternaam, DateTime geboortedatum, string mobielnummer, Geslacht geslacht, string email, int gebruikerid = 0, int studentenhuisid = 0)
+        {
             GebruikerID = gebruikerid;
             Gebruikersnaam = gebruikernaam;
-            _wachtwoord = wachtwoord;
             Voornaam = voornaam;
             Achternaam = achternaam;
             Gebortendatum = geboortedatum;
             Mobielnummer = mobielnummer;
             hetGeslacht = geslacht;
             Email = email;
+            StudentenhuisID = studentenhuisid;
         }
         public Gebruiker()
         {
         }
+        public Gebruiker(string gebruikersnaam,string wachtwoord)
+        {
+            Gebruikersnaam = gebruikersnaam;
+            _wachtwoord = wachtwoord;
+        }
 
-
-        public bool VernderWachtwoord(string nieuwwachtwoord)
+        public bool SetWachtwoord(string Setwachtwoord)
         {
 
-            this._wachtwoord = nieuwwachtwoord;
+            this._wachtwoord = Setwachtwoord;
             return true;
         }
 

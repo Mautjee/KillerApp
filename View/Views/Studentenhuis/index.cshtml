@@ -1,0 +1,29 @@
+﻿@using Model;
+@model IEnumerable<Model.StudentenHuis>
+@{
+    ViewData["Title"] = "Studentenhuis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Studentenhuis</h2>
+
+<head>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/GebrukerJS.js"></script>
+</head>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>All Gebruikers</h2>
+        <ul id="platformLinks">
+            @foreach (StudentenHuis h in Model)
+            {
+                <li><a asp-action="ViewDetailPartial" id="viewdetailpartial" onclick="ShowReserveringsForm(event)" asp-route-id="@h.StudentenhuisID">@h.Naam</a> (aantal bewoners @Model.Count())</li>
+            }
+        </ul>
+        <a asp-action="Toevoegen" class="btn btn-default">Voeg gebruiker toe</a>
+    </div>
+    <div class="col-md-6" id="GebruikerDetail">
+    </div>
+
+</div>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Interfaces;
 using Model;
+using KillerApp.Data.Interfaces;
 using KillerApp.Data.SQL;
 using System.Data.SqlClient;
 using static Model.Gebruiker;
@@ -41,19 +41,15 @@ namespace Data.Contexts
                             {
                                 while (sdr.Read())
                                 {
-                                    list.Add(new Gebruiker
-                                    {
-                                        GebruikerID = Convert.ToInt32(sdr["GebruikerID"]),
-                                        Gebruikersnaam = sdr["Gebruikersnaam"].ToString(),
-                                        Wachtwoord = sdr["Wachtwoord"].ToString(),
-                                        Voornaam = sdr["Voornaam"].ToString(),
-                                        Achternaam = sdr["Achternaam"].ToString(),
-                                        Gebortendatum = Convert.ToDateTime(sdr["Geboortedatum"]),
-                                        Mobielnummer = sdr["MobielNummer"].ToString(),
-                                        hetGeslacht = (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
-                                        Email = sdr["MailAdress"].ToString(),
-                                        StudentenhuisID = Convert.ToInt32(sdr["StudentenHuis"])
-                                    });
+                                    list.Add(new Gebruiker(sdr["Gebruikersnaam"].ToString(),
+                                        sdr["Voornaam"].ToString(),
+                                        sdr["Achternaam"].ToString(), 
+                                        Convert.ToDateTime(sdr["Geboortedatum"]),
+                                        sdr["MobielNummer"].ToString(), 
+                                        (Geslacht)Convert.ToInt32(sdr["Geslacht"]), 
+                                        sdr["MailAdress"].ToString(), 
+                                        Convert.ToInt32(sdr["GebruikerID"]), 
+                                        Convert.ToInt32(sdr["StudentenhuisID"])));
                                 }
                             }
 
@@ -98,16 +94,18 @@ namespace Data.Contexts
                             {
                                 sdr.Read();
 
-                                gebr = new Gebruiker(Convert.ToInt32(sdr["GebruikerID"]),
+                                gebr = new Gebruiker(
                                        sdr["Gebruikersnaam"].ToString(),
-                                        sdr["Wachtwoord"].ToString(),
                                         sdr["Voornaam"].ToString(),
                                          sdr["Achternaam"].ToString(),
                                         Convert.ToDateTime(sdr["Geboortedatum"]),
                                         sdr["MobielNummer"].ToString(),
                                         (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
-                                       sdr["MailAdress"].ToString());
-                                
+                                       sdr["MailAdress"].ToString(),
+                                       Convert.ToInt32(sdr["GebruikerID"]),
+                                       Convert.ToInt32(sdr["StudentenhuisID"]));
+
+                                gebr.SetWachtwoord(sdr["wachtwoord"].ToString());
                             }
 
                         }
@@ -132,7 +130,8 @@ namespace Data.Contexts
 
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        string qry = $"INSERT INTO Table_Gebruiker(Gebruikersnaam,Wachtwoord,Voornaam,Achternaam,Geboortedatum,MobielNummer,MailAdress,StudentenHuis,Geslacht)" +
+                    
+                        string qry = $"INSERT INTO Table_Gebruiker(Gebruikersnaam,Wachtwoord,Voornaam,Achternaam,Geboortedatum,MobielNummer,MailAdress,StudentenhuisID,Geslacht)" +
                                         $" VALUES('{g.Gebruikersnaam}','{g.Wachtwoord}','{g.Voornaam}','{g.Achternaam}'" +
                                         $",'{g.Gebortendatum.ToString("yyMMdd")}','{g.Mobielnummer}','{g.Email}'," +
                                         $"'{g.StudentenhuisID}','{(int)g.hetGeslacht}')";
@@ -171,8 +170,8 @@ namespace Data.Contexts
                     using (SqlCommand cmd = new SqlCommand())
                     {
 
-                        string qry = $"UPDATE Table_Gebruiker SET Gebruikersnaam = '{g.Gebruikersnaam}',Wachtwoord = '{g.Wachtwoord}',Voornaam = '{g.Voornaam}',Achternaam = '{g.Achternaam}'," +
-                                        $"Geboortedatum = '{g.Gebortendatum}',MobielNummer = '{g.Mobielnummer}',MailAdress = '{g.Email}',StudentenHuis = '{g.StudentenhuisID}',Geslacht = '{(int)g.hetGeslacht}'" +
+                        string qry = $"UPDATE Table_Gebruiker SET Gebruikersnaam = '{g.Gebruikersnaam}',Voornaam = '{g.Voornaam}',Achternaam = '{g.Achternaam}'," +
+                                        $"Geboortedatum = '{g.Gebortendatum}',MobielNummer = '{g.Mobielnummer}',MailAdress = '{g.Email}',Geslacht = '{(int)g.hetGeslacht}'" +
                                             $"WHERE GebruikerID = {g.GebruikerID}";
 
                         cmd.CommandText = qry;
@@ -196,6 +195,11 @@ namespace Data.Contexts
                 return feedback;
             }
             
+        }
+
+        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        {
+            throw new NotImplementedException();
         }
     }
 }

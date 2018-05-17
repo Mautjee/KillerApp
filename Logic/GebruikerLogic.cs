@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Repositories;
+using KillerApp.Data.Repositories;
 using Model;
 
 namespace Logic
@@ -17,6 +17,11 @@ namespace Logic
         public QueryFeedback AddGebruiker(Gebruiker gebruiker)
         {
             return _gebruikerRepo.AddGebruiker(gebruiker);
+        }
+
+        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        {
+            return _gebruikerRepo.CheckLogin(gebruiker);
         }
 
         public List<Gebruiker> GetAllGebruikers()

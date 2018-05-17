@@ -1,11 +1,11 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Data.Interfaces;
-using Data.Contexts;
+using KillerApp.Data.Interfaces;
+using KillerApp.Data.Contexts;
 using Model;
 
-namespace Data.Repositories
+namespace KillerApp.Data.Repositories
 {
     public class GebruikerRepository : IGebruikerContext
     {
@@ -19,6 +19,11 @@ namespace Data.Repositories
         public QueryFeedback AddGebruiker(Gebruiker gebruiker)
         {
            return _gebruikerContext.AddGebruiker(gebruiker);
+        }
+
+        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        {
+            return _gebruikerContext.CheckLogin(gebruiker);
         }
 
         public List<Gebruiker> GetAllGebruikers()

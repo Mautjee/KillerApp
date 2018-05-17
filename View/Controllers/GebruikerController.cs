@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Logic;
 using Model;
 using KillerApp.Factory;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace KillerApp.View.Controllers
 {
@@ -41,18 +44,11 @@ namespace KillerApp.View.Controllers
             
             try
             {
-                Gebruiker NiewGebruiker = new Gebruiker
-                {
-                    Gebruikersnaam = UserName,
-                    Wachtwoord = Wachtwoord,
-                    Voornaam = DeVoornaam,
-                    Achternaam = DeAchternaam,
-                    Mobielnummer = MobielNummer,
-                    Email = Email,
-                    Gebortendatum = Gebortendatum,
-                    hetGeslacht = Geslacht
 
-                };
+                Gebruiker NiewGebruiker = new Gebruiker(UserName,DeVoornaam,DeAchternaam,Gebortendatum,MobielNummer,Geslacht,Email);
+
+                NiewGebruiker.SetWachtwoord(Hasher.Create(Wachtwoord));
+
                 QueryFeedback feedback = gebruikLogic.AddGebruiker(NiewGebruiker);
                 if (feedback.Gelukt)
                 {
@@ -67,6 +63,8 @@ namespace KillerApp.View.Controllers
             }
         }
 
+
+
         [HttpPost]
         public IActionResult UpdateGebruiker(Gebruiker gebr)
         {
@@ -78,5 +76,6 @@ namespace KillerApp.View.Controllers
             }
             else { return Content(feedback.Message); }
         }
+
     }
 }

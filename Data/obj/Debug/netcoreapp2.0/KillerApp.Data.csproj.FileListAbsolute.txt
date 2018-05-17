@@ -24,3 +24,5 @@ C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Deb
 C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.csproj.CopyComplete
 C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.dll
 C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\obj\Debug\netcoreapp2.0\KillerApp.Data.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\BackEndOpzet\Data\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
