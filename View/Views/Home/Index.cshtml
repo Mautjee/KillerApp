@@ -3,7 +3,13 @@
 <head>
     <link href="~/css/LoginStyleSheet.css" rel="stylesheet" />
 </head>
+@if (User.Identity.IsAuthenticated)
+{
+   @Html.Partial("~/Views/Home/Dashboard.cshtml")
 
+}
+else
+{
 <form asp-action="CheckLogin" asp-controller="Home" method="post" class="form-horizontal">
     <fieldset>
         <legend></legend>
@@ -27,3 +33,4 @@
         </div>
     </fieldset>
 </form>
+}

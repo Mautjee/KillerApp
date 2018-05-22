@@ -26,12 +26,17 @@ namespace KillerApp.Data.Contexts
            
         }
 
-        public StudentenHuis GetallBewoners(int id)
+        public StudentenHuis GetAllBewoners(int id)
         {
             throw new NotImplementedException();
         }
 
         public List<StudentenHuis> GetallStudentenhuizen()
+        {
+            throw new NotImplementedException();
+        }
+
+        public StudentenHuis GetStudentenHuis(int id)
         {
             throw new NotImplementedException();
         }

@@ -11,7 +11,7 @@ namespace KillerApp.Data.Contexts
 {
     public class StudentenHuisSqlContext : SqlCon , IStudentenhuisContext
     {
-        public StudentenHuis GetallBewoners(int studenthuisId)
+        public StudentenHuis GetAllBewoners(int studenthuisId)
         {
             StudentenHuis huis = new StudentenHuis();
             try
@@ -103,6 +103,13 @@ namespace KillerApp.Data.Contexts
                 Console.Write(EX.Message);
             }
             return sh;
+        }
+
+        public StudentenHuis GetStudentenHuis(int id)
+        {
+            string query = $"Select s.NaamHuis From [Table_Studentenhuis] s, [Table_Gebruiker_Activiteit] ga " +
+                            $"WHERE s.StudentenhuisID = ga.StudenthuisID " +
+                            $"AND s.StudentenhuisID = {id} And ga.[Out] is NULL;";
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

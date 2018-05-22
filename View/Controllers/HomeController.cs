@@ -16,7 +16,7 @@ namespace View.Controllers
 {
     public class HomeController : Controller
     {
-        GebruikerLogic gebruikLogic = GebruikersFactory.UseSqlContext();
+        GebruikerLogic gebruikLogic = GebruikersFactory.UseTestContext();
 
         public IActionResult Index()
         {
@@ -67,6 +67,10 @@ namespace View.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity)).Wait();
         }
-
+        public IActionResult LogOut()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

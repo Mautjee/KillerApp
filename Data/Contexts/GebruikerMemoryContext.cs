@@ -34,7 +34,13 @@ namespace Data.Contexts
 
         public QueryFeedback CheckLogin(Gebruiker gebruiker)
         {
-            throw new NotImplementedException();
+            QueryFeedback Data = new QueryFeedback();
+            Gebruiker g = new Gebruiker("Mautjee", "Mauro", "Eijsenring",
+                    Convert.ToDateTime("06-19-1997"), "0623947539", (Geslacht)0, "mauro@eijsnering.com", gebruikerID++);
+            Data.Gelukt =  g.SetWachtwoord("1234");
+
+            if(gebruiker.Gebruikersnaam == g.Gebruikersnaam && gebruiker.Wachtwoord == g.Wachtwoord) { Data.Gelukt = true; return Data; }
+            else { Data.Gelukt = false; return Data; }
         }
 
         public List<Gebruiker> GetAllGebruikers()

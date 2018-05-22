@@ -14,9 +14,9 @@ namespace KillerApp.Data.Repositories
         {
             _StudenthuisContext = studentenhuiscontext;
         }
-        public StudentenHuis GetallBewoners(int studenthuisId)
+        public StudentenHuis GetAllBewoners(int studenthuisId)
         {
-            return _StudenthuisContext.GetallBewoners(studenthuisId);
+            return _StudenthuisContext.GetAllBewoners(studenthuisId);
         }
 
         public List<StudentenHuis> GetallStudentenhuizen()

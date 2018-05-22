@@ -17,7 +17,7 @@ namespace KillerApp.Logic
 
         public StudentenHuis GetallBewoners(int studenthuisId)
         {
-            return _studentenhuisRepository.GetallBewoners(studenthuisId);
+            return _studentenhuisRepository.GetAllBewoners(studenthuisId);
         }
 
         public List<StudentenHuis> GetallStudentenhuizen()

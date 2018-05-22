@@ -41,4 +41,17 @@ Select NaamHuis FROM Table_Studentenhuis
 
 Select COUNT(GebruikerID) From Table_Gebruiker Where StudentenhuisID = 1
 
-Select * From Table_Gebruiker Where Gebruikersnaam = 'mautjee' And Wachtwoord = ''
+Select * From Table_Gebruiker Where Gebruikersnaam = 'mautjee' And Wachtwoord = '';
+
+CREATE TABLE [dbo].[Table_Gebruiker_Activiteit] (
+    [GebruikerID]   INT NOT NULL,
+    [StudenthuisID] INT NOT NULL,
+    [In]            DATE NOT NULL,
+    [Out]           DATE,
+    PRIMARY KEY CLUSTERED ([GebruikerID] ASC, [StudenthuisID] ASC),
+    FOREIGN KEY ([StudenthuisID]) REFERENCES [dbo].[Table_Studentenhuis] ([StudentenhuisID]),
+    FOREIGN KEY ([GebruikerID]) REFERENCES [dbo].[Table_Gebruiker] ([GebruikerID])
+);
+
+Select s.NaamHuis From [Table_Studentenhuis] s, [Table_Gebruiker_Activiteit] ga WHERE s.StudentenhuisID = ga.StudenthuisID AND s.StudentenhuisID = 1 And ga.[Out] is NULL;
+
