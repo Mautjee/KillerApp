@@ -27,6 +27,7 @@ namespace View
                 .AddCookie(options =>
                 {
                     options.LoginPath = "/Account/Login";
+                    
                 });
             services.AddMvc();
         }

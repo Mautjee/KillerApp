@@ -12,11 +12,16 @@ namespace Model
         public string Gebruikersnaam { get; set; }
 
         private string _wachtwoord;
-        public string Wachtwoord { get; }
+        public string Wachtwoord
+        {
+            get { return _wachtwoord; }
+
+            set { _wachtwoord = value; }
+        }
 
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
-        public DateTime Gebortendatum { get; set; }
+        public DateTime Geboortedatum { get; set; }
         public string Mobielnummer { get; set; }
         public Geslacht hetGeslacht { get; set; }
         public string Email { get; set; }
@@ -31,7 +36,7 @@ namespace Model
             Gebruikersnaam = gebruikernaam;
             Voornaam = voornaam;
             Achternaam = achternaam;
-            Gebortendatum = geboortedatum;
+            Geboortedatum = geboortedatum;
             Mobielnummer = mobielnummer;
             hetGeslacht = geslacht;
             Email = email;
@@ -46,11 +51,9 @@ namespace Model
             _wachtwoord = wachtwoord;
         }
 
-        public bool SetWachtwoord(string Setwachtwoord)
+        public void SetWachtwoord(string Setwachtwoord)
         {
-
             this._wachtwoord = Setwachtwoord;
-            return true;
         }
 
         public bool VoegStudentehuisToe(int StudenthuisID)

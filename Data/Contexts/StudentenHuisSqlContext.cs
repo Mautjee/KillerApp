@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Text;
 using KillerApp.Data.Interfaces;
 using KillerApp.Data.SQL;
+using KillerApp.Model;
 using Model;
 using static Model.Gebruiker;
 
@@ -105,11 +106,12 @@ namespace KillerApp.Data.Contexts
             return sh;
         }
 
-        public StudentenHuis GetStudentenHuis(int id)
+        public BewonerInfo GetStudentenHuisGebruiker(int id)
         {
             string query = $"Select s.NaamHuis From [Table_Studentenhuis] s, [Table_Gebruiker_Activiteit] ga " +
                             $"WHERE s.StudentenhuisID = ga.StudenthuisID " +
                             $"AND s.StudentenhuisID = {id} And ga.[Out] is NULL;";
+            throw new NotImplementedException();
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

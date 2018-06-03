@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using KillerApp.Model;
 using Model;
 
 namespace KillerApp.Data.Interfaces
@@ -11,6 +12,6 @@ namespace KillerApp.Data.Interfaces
         StudentenHuis GetAllBewoners(int studenthuisId);
         bool voegBewonertoe(Gebruiker gebruiker);
         bool verwijderBewoner(Gebruiker gebruiker);
-        StudentenHuis GetStudentenHuis(int id);
+        BewonerInfo GetStudentenHuisGebruiker(int id);
     }
 }

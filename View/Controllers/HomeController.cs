@@ -9,6 +9,9 @@ using Model;
 using System.Security.Claims;
 using Logic;
 using KillerApp.Factory;
+using KillerApp.Logic;
+using KillerApp.Model;
+using KillerApp.View.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 
@@ -17,10 +20,22 @@ namespace View.Controllers
     public class HomeController : Controller
     {
         GebruikerLogic gebruikLogic = GebruikersFactory.UseTestContext();
+        StudentenhuisLogic studentenhuislogic = StudentenhuisFactory.UseSqlContext();
 
-        public IActionResult Index()
+        public IActionResult Index(Gebruiker gebr)
         {
-            return View(new Gebruiker());
+            DashboardViewModel viewmodel = new DashboardViewModel();
+
+            viewmodel.gebruiker = gebr;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return View("Dashboard", viewmodel);
+            }
+            else
+            {
+                return View(new Gebruiker());
+            }
         }
 
         public IActionResult Dashboard()
@@ -36,7 +51,10 @@ namespace View.Controllers
         [HttpPost]
         public IActionResult CheckLogin(Gebruiker gebruiker)
         {
-            if (gebruikLogic.CheckLogin(gebruiker).Gelukt)
+            QueryFeedback qf = new QueryFeedback();
+
+            qf = gebruikLogic.CheckLogin(gebruiker);
+            if (qf.Gelukt)
             {
                 PerformLogin(gebruiker);
 
@@ -47,9 +65,7 @@ namespace View.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            
-
-            return View(gebruiker);
+            return Content(qf.Message);
         }
 
         private void PerformLogin(Gebruiker gebruiker)
@@ -57,6 +73,7 @@ namespace View.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, gebruiker.Gebruikersnaam),
+                new Claim("UserID", gebruiker.GebruikerID.ToString())
 
             };
 
@@ -71,6 +88,13 @@ namespace View.Controllers
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult VoegActiviteitToe()
+        {
+
+            return Content("lol");
         }
     }
 }

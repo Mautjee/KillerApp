@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KillerApp.Data.Interfaces;
+using KillerApp.Model;
 using Model;
 
 namespace KillerApp.Data.Contexts
@@ -36,9 +37,10 @@ namespace KillerApp.Data.Contexts
             throw new NotImplementedException();
         }
 
-        public StudentenHuis GetStudentenHuis(int id)
+        public BewonerInfo GetStudentenHuisGebruiker(int id)
         {
-            throw new NotImplementedException();
+           throw new NotImplementedException();
+            
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

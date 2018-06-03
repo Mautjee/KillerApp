@@ -37,10 +37,19 @@ namespace Data.Contexts
             QueryFeedback Data = new QueryFeedback();
             Gebruiker g = new Gebruiker("Mautjee", "Mauro", "Eijsenring",
                     Convert.ToDateTime("06-19-1997"), "0623947539", (Geslacht)0, "mauro@eijsnering.com", gebruikerID++);
-            Data.Gelukt =  g.SetWachtwoord("1234");
+            g.SetWachtwoord("1234");
 
-            if(gebruiker.Gebruikersnaam == g.Gebruikersnaam && gebruiker.Wachtwoord == g.Wachtwoord) { Data.Gelukt = true; return Data; }
-            else { Data.Gelukt = false; return Data; }
+            if (gebruiker.Gebruikersnaam == g.Gebruikersnaam && gebruiker.Wachtwoord == g.Wachtwoord)
+            {
+                Data.Gelukt = true;
+                return Data;
+            }
+            else
+            {
+                Data.Gelukt = false;
+                Data.Message = $"Verkeerde Gebruikersnaam of Wachtwoord wat je hebt ingevult is {gebruiker.Gebruikersnaam} en als wachtwoord {gebruiker.Wachtwoord} maaht het moet {g.Gebruikersnaam} en als ww {g.Wachtwoord}";
+                return Data;
+            }
         }
 
         public List<Gebruiker> GetAllGebruikers()

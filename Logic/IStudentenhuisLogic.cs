@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using KillerApp.Model;
 
 namespace KillerApp.Logic
 {
@@ -11,5 +12,6 @@ namespace KillerApp.Logic
         StudentenHuis GetallBewoners(int studenthuisId);
         bool voegBewonertoe(Gebruiker gebruiker);
         bool verwijderBewoner(Gebruiker gebruiker);
+        BewonerInfo GetStudentenHuisInfo(int id);
     }
 }

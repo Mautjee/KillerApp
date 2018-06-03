@@ -55,3 +55,9 @@ CREATE TABLE [dbo].[Table_Gebruiker_Activiteit] (
 
 Select s.NaamHuis From [Table_Studentenhuis] s, [Table_Gebruiker_Activiteit] ga WHERE s.StudentenhuisID = ga.StudenthuisID AND s.StudentenhuisID = 1 And ga.[Out] is NULL;
 
+SELECT s.NaamHuis, t.Saldo FROM dbo.Table_Tegoed t Right JOIN dbo.Table_Studentenhuis s 
+ON t.StudenthuisID = s.StudentenhuisID 
+WHERE t.StudenthuisID = (Select ga.StudenthuisID 
+							FROM [Table_Gebruiker_Activiteit] ga 
+							WHERE ga.GebruikerID = 3 and ga.[Out] is NULL) 
+AND t.GebruikerID = 3;

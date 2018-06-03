@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Model;
 using KillerApp.Data.Repositories;
+using KillerApp.Model;
 
 namespace KillerApp.Logic
 {
@@ -28,6 +29,11 @@ namespace KillerApp.Logic
         public bool verwijderBewoner(Gebruiker gebruiker)
         {
             throw new NotImplementedException();
+        }
+
+        public BewonerInfo GetStudentenHuisInfo(int id)
+        {
+          return  _studentenhuisRepository.GetStudentenHuisGebruiker(id);
         }
 
         public bool voegBewonertoe(Gebruiker gebruiker)

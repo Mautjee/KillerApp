@@ -133,7 +133,7 @@ namespace Data.Contexts
                     
                         string qry = $"INSERT INTO Table_Gebruiker(Gebruikersnaam,Wachtwoord,Voornaam,Achternaam,Geboortedatum,MobielNummer,MailAdress,StudentenhuisID,Geslacht)" +
                                         $" VALUES('{g.Gebruikersnaam}','{g.Wachtwoord}','{g.Voornaam}','{g.Achternaam}'" +
-                                        $",'{g.Gebortendatum.ToString("yyMMdd")}','{g.Mobielnummer}','{g.Email}'," +
+                                        $",'{g.Geboortedatum.ToString("yyMMdd")}','{g.Mobielnummer}','{g.Email}'," +
                                         $"'{g.StudentenhuisID}','{(int)g.hetGeslacht}')";
 
                         cmd.CommandText = qry;
@@ -171,7 +171,7 @@ namespace Data.Contexts
                     {
 
                         string qry = $"UPDATE Table_Gebruiker SET Gebruikersnaam = '{g.Gebruikersnaam}',Voornaam = '{g.Voornaam}',Achternaam = '{g.Achternaam}'," +
-                                        $"Geboortedatum = '{g.Gebortendatum}',MobielNummer = '{g.Mobielnummer}',MailAdress = '{g.Email}',Geslacht = '{(int)g.hetGeslacht}'" +
+                                        $"Geboortedatum = '{g.Geboortedatum}',MobielNummer = '{g.Mobielnummer}',MailAdress = '{g.Email}',Geslacht = '{(int)g.hetGeslacht}'" +
                                             $"WHERE GebruikerID = {g.GebruikerID}";
 
                         cmd.CommandText = qry;
