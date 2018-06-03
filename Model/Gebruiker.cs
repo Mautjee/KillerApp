@@ -7,7 +7,7 @@ namespace Model
     public class Gebruiker
     {
       
-        public int GebruikerID { get;}
+        public int GebruikerID { get; set; }
 
         public string Gebruikersnaam { get; set; }
 

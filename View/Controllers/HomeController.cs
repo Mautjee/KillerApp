@@ -19,7 +19,7 @@ namespace View.Controllers
 {
     public class HomeController : Controller
     {
-        GebruikerLogic gebruikLogic = GebruikersFactory.UseTestContext();
+        GebruikerLogic gebruikLogic = GebruikersFactory.UseSqlContext();
         StudentenhuisLogic studentenhuislogic = StudentenhuisFactory.UseSqlContext();
 
         public IActionResult Index(Gebruiker gebr)
@@ -27,6 +27,8 @@ namespace View.Controllers
             DashboardViewModel viewmodel = new DashboardViewModel();
 
             viewmodel.gebruiker = gebr;
+
+            viewmodel.Bewonersaldos = studentenhuislogic.AlleactieveBewonersaldos(studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID));
 
             if (User.Identity.IsAuthenticated)
             {
@@ -51,10 +53,9 @@ namespace View.Controllers
         [HttpPost]
         public IActionResult CheckLogin(Gebruiker gebruiker)
         {
-            QueryFeedback qf = new QueryFeedback();
-
-            qf = gebruikLogic.CheckLogin(gebruiker);
-            if (qf.Gelukt)
+            
+            var g = gebruikLogic.CheckLogin(gebruiker);
+            if (g.GebruikerID > 0)
             {
                 PerformLogin(gebruiker);
 
@@ -62,10 +63,10 @@ namespace View.Controllers
                 {
                     return Redirect(HttpContext.Request.Query["ReturnUrl"]);
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home",g);
             }
 
-            return Content(qf.Message);
+            return Content("INlog MIslukt");
         }
 
         private void PerformLogin(Gebruiker gebruiker)

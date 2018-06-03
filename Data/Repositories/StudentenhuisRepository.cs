@@ -20,14 +20,19 @@ namespace KillerApp.Data.Repositories
             return _studenthuisContext.GetAllBewoners(studenthuisId);
         }
 
+        public List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId)
+        {
+            return _studenthuisContext.AlleactieveBewonersaldos(studentenhuisId);
+        }
+
         public List<StudentenHuis> GetallStudentenhuizen()
         {
             throw new NotImplementedException();
         }
 
-        public BewonerInfo GetStudentenHuisGebruiker(int id)
+        public int GetActiveStudentenhuisBijGebruiker(int id)
         {
-            return _studenthuisContext.GetStudentenHuisGebruiker(id);
+            return _studenthuisContext.GetActiveStudentenhuisBijGebruiker(id);
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

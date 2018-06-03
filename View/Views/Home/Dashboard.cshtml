@@ -1,4 +1,5 @@
-﻿@model KillerApp.View.Models.DashboardViewModel
+﻿@using KillerApp.Model
+@model KillerApp.View.Models.DashboardViewModel
 @{
     ViewData["Title"] = "Dashboard";
 }
@@ -24,7 +25,12 @@
             <div class="dasboard-container">
                 <h2>Mijn Studentenhuis</h2>
                 <div class="dashboardcontent-container">
-                    <h1>Hallo</h1>
+                    <ul id="platformLinks">
+                        @foreach ( Bewonersaldo b in Model.Bewonersaldos)
+                        {
+                            <li><a id="viewdetailpartial" >@b.Voornaam</a> (@b.Saldo)</li>
+                        }
+                    </ul>
                 </div>
                 <div class="link-container">
                 </div>
@@ -35,29 +41,29 @@
         <div class="col-sm-18">
             <div class="dasboard-container">
                 <h2>Activiteit</h2><form asp-controller="Home" asp-action="VoegActiviteitToe" method="post" class="form-control">
-                                       <div class="dashboard-row">
-                                           <div class="form-group">
-                                               <label class="control-label col-sm-3" for="DatumVanActiviteit">Waneer heeft de activiteit plaatsgevonden</label>
-                                               <div class="col-sm-10 input-small">
-                                                   <input class="form-control col-sm-10" asp-for="@Model.aciviteit.Date" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
-                                               </div>
-                                           </div>
-                                       </div>
+                    <div class="dashboard-row">
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="Beschrijving">Beschrijving van activiteit</label>
+                            <label class="control-label col-sm-3" for="DatumVanActiviteit">Waneer heeft de activiteit plaatsgevonden</label>
                             <div class="col-sm-10 input-small">
-                                <input class="form-control col-sm-10" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
+                                <input class="form-control col-sm-10" asp-for="@Model.aciviteit.Date" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
                             </div>
                         </div>
-                 
- 
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="Bedrag">Bedrag van de activiteit</label>
-                            <div class="col-sm-10 input-small">
-                                <input class="form-control col-sm-10" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Beschrijving">Beschrijving van activiteit</label>
+                        <div class="col-sm-10 input-small">
+                            <input class="form-control col-sm-10" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
                         </div>
-                 
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Bedrag">Bedrag van de activiteit</label>
+                        <div class="col-sm-10 input-small">
+                            <input class="form-control col-sm-10" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
+                        </div>
+                    </div>
+
                     <div class="link-container">
                         <input type="submit" value="Verstuur" class="btn btn-default" />
                     </div>

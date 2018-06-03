@@ -32,7 +32,7 @@ namespace Data.Contexts
             return feedback;
         }
 
-        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        public Gebruiker CheckLogin(Gebruiker gebruiker)
         {
             QueryFeedback Data = new QueryFeedback();
             Gebruiker g = new Gebruiker("Mautjee", "Mauro", "Eijsenring",
@@ -42,13 +42,13 @@ namespace Data.Contexts
             if (gebruiker.Gebruikersnaam == g.Gebruikersnaam && gebruiker.Wachtwoord == g.Wachtwoord)
             {
                 Data.Gelukt = true;
-                return Data;
+                return g;
             }
             else
             {
                 Data.Gelukt = false;
                 Data.Message = $"Verkeerde Gebruikersnaam of Wachtwoord wat je hebt ingevult is {gebruiker.Gebruikersnaam} en als wachtwoord {gebruiker.Wachtwoord} maaht het moet {g.Gebruikersnaam} en als ww {g.Wachtwoord}";
-                return Data;
+                return g;
             }
         }
 

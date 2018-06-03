@@ -31,9 +31,14 @@ namespace KillerApp.Logic
             throw new NotImplementedException();
         }
 
-        public BewonerInfo GetStudentenHuisInfo(int id)
+        public int GetActiveStudentenhuisBijGebruiker(int id)
         {
-          return  _studentenhuisRepository.GetStudentenHuisGebruiker(id);
+          return  _studentenhuisRepository.GetActiveStudentenhuisBijGebruiker(id);
+        }
+
+        public List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId)
+        {
+            return _studentenhuisRepository.AlleactieveBewonersaldos(studentenhuisId);
         }
 
         public bool voegBewonertoe(Gebruiker gebruiker)

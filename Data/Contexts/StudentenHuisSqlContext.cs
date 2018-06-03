@@ -12,6 +12,51 @@ namespace KillerApp.Data.Contexts
 {
     public class StudentenHuisSqlContext : SqlCon , IStudentenhuisContext
     {
+        public List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId)
+        {
+            List<Bewonersaldo> ret = new List<Bewonersaldo>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string query = $"Select Voornaam, Saldo from vwActiveStudentenhuisGebruikers WHERE studenthuisid = @studentenhuisid";
+
+                        cmd.CommandText = query;
+                        cmd.Connection = conn;
+
+                        cmd.Parameters.AddWithValue("@studentenhuisid", studentenhuisId);
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+                                while (sdr.Read())
+                                {
+                                    ret.Add(new Bewonersaldo()
+                                    {
+                                        Saldo = (int)sdr["Saldo"],
+                                        Voornaam = (string)sdr["Voornaam"]
+                                    });
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //OOPS
+            }
+
+            return ret;
+        }
+
         public StudentenHuis GetAllBewoners(int studenthuisId)
         {
             StudentenHuis huis = new StudentenHuis();
@@ -106,12 +151,35 @@ namespace KillerApp.Data.Contexts
             return sh;
         }
 
-        public BewonerInfo GetStudentenHuisGebruiker(int id)
-        {
-            string query = $"Select s.NaamHuis From [Table_Studentenhuis] s, [Table_Gebruiker_Activiteit] ga " +
-                            $"WHERE s.StudentenhuisID = ga.StudenthuisID " +
-                            $"AND s.StudentenhuisID = {id} And ga.[Out] is NULL;";
-            throw new NotImplementedException();
+        public int GetActiveStudentenhuisBijGebruiker(int id)
+        {        
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string query = "Select top 1 StudenthuisID from vwActiveStudentenhuisGebruikers WHERE GebruikerID = @gebruikerID";
+
+                        cmd.CommandText = query;
+
+                        cmd.Parameters.AddWithValue("@gebruikerID", id);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        return (int)cmd.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Console.Write(Ex.Message);
+            }
+
+            return 0;
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

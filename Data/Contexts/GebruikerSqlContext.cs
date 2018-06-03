@@ -197,9 +197,66 @@ namespace Data.Contexts
             
         }
 
-        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        public Gebruiker CheckLogin(Gebruiker gebruiker)
         {
-            throw new NotImplementedException();
+            Gebruiker gebr = new Gebruiker();
+
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string query = $"Select * from Table_Gebruiker WHere Gebruikersnaam = @gebrnaam and Wachtwoord = @passw";
+
+                        cmd.CommandText = query;
+
+                        cmd.Parameters.AddWithValue("@gebrnaam", gebruiker.Gebruikersnaam);
+                        cmd.Parameters.AddWithValue("@passw", gebruiker.Wachtwoord);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+
+                            if (sdr.HasRows)
+                            {
+                                sdr.Read();
+
+                                gebr = new Gebruiker(
+                                    sdr["Gebruikersnaam"].ToString(),
+                                    sdr["Voornaam"].ToString(),
+                                    sdr["Achternaam"].ToString(),
+                                    Convert.ToDateTime(sdr["Geboortedatum"]),
+                                    sdr["MobielNummer"].ToString(),
+                                    (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
+                                    sdr["MailAdress"].ToString(),
+                                    Convert.ToInt32(sdr["GebruikerID"]),
+                                    Convert.ToInt32(sdr["StudentenhuisID"]));
+
+                                gebr.SetWachtwoord(sdr["wachtwoord"].ToString());
+                            }
+                            else
+                            {
+                                gebr = new Gebruiker();
+                                
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                Console.WriteLine(ex.Message);
+            }
+
+            return gebr;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Logic
             return _gebruikerRepo.AddGebruiker(gebruiker);
         }
 
-        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        public Gebruiker CheckLogin(Gebruiker gebruiker)
         {
             return _gebruikerRepo.CheckLogin(gebruiker);
         }

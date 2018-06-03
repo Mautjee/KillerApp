@@ -10,8 +10,10 @@ namespace KillerApp.Data.Interfaces
     {
         List<StudentenHuis> GetallStudentenhuizen();
         StudentenHuis GetAllBewoners(int studenthuisId);
+        List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId);
         bool voegBewonertoe(Gebruiker gebruiker);
         bool verwijderBewoner(Gebruiker gebruiker);
-        BewonerInfo GetStudentenHuisGebruiker(int id);
+        int GetActiveStudentenhuisBijGebruiker(int id);
+
     }
 }

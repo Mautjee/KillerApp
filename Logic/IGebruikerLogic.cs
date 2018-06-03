@@ -11,6 +11,6 @@ namespace Logic
         Gebruiker GetbyID(int id);
         QueryFeedback AddGebruiker(Gebruiker gebruiker);
         QueryFeedback updateGebruiker(Gebruiker gebruiker);
-        QueryFeedback CheckLogin(Gebruiker gebruiker);
+        Gebruiker CheckLogin(Gebruiker gebruiker);
     }
 }

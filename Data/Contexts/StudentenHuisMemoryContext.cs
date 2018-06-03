@@ -27,6 +27,11 @@ namespace KillerApp.Data.Contexts
            
         }
 
+        public List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId)
+        {
+            throw new NotImplementedException();
+        }
+
         public StudentenHuis GetAllBewoners(int id)
         {
             throw new NotImplementedException();
@@ -37,7 +42,7 @@ namespace KillerApp.Data.Contexts
             throw new NotImplementedException();
         }
 
-        public BewonerInfo GetStudentenHuisGebruiker(int id)
+        public int GetActiveStudentenhuisBijGebruiker(int id)
         {
            throw new NotImplementedException();
             

@@ -21,7 +21,7 @@ namespace KillerApp.Data.Repositories
            return _gebruikerContext.AddGebruiker(gebruiker);
         }
 
-        public QueryFeedback CheckLogin(Gebruiker gebruiker)
+        public Gebruiker CheckLogin(Gebruiker gebruiker)
         {
             return _gebruikerContext.CheckLogin(gebruiker);
         }
