@@ -22,7 +22,7 @@ namespace KillerApp.Data.Contexts
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        string query = $"Select Voornaam, Saldo from vwActiveStudentenhuisGebruikers WHERE studenthuisid = @studentenhuisid";
+                        string query = $"Select GebruikerID, Voornaam, Saldo from vwActiveStudentenhuisGebruikers WHERE studenthuisid = 1";
 
                         cmd.CommandText = query;
                         cmd.Connection = conn;
@@ -39,6 +39,7 @@ namespace KillerApp.Data.Contexts
                                 {
                                     ret.Add(new Bewonersaldo()
                                     {
+                                        GebruikerID = (int)sdr["GebruikerID"],
                                         Saldo = (int)sdr["Saldo"],
                                         Voornaam = (string)sdr["Voornaam"]
                                     });
@@ -151,8 +152,9 @@ namespace KillerApp.Data.Contexts
             return sh;
         }
 
-        public int GetActiveStudentenhuisBijGebruiker(int id)
-        {        
+        public StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebruikerid)
+        {
+            StudentenHuis sthu = new StudentenHuis();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionstring()))
@@ -160,17 +162,29 @@ namespace KillerApp.Data.Contexts
 
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        string query = "Select top 1 StudenthuisID from vwActiveStudentenhuisGebruikers WHERE GebruikerID = @gebruikerID";
+                        string query = "Select top 1 StudenthuisID, NaamHuis from vwActiveStudentenhuisGebruikers WHERE GebruikerID = @gebruikerID";
 
                         cmd.CommandText = query;
 
-                        cmd.Parameters.AddWithValue("@gebruikerID", id);
+                        cmd.Parameters.AddWithValue("@gebruikerID", gebruikerid);
 
                         cmd.Connection = conn;
 
                         conn.Open();
 
-                        return (int)cmd.ExecuteScalar();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+
+                                sdr.Read();
+
+                                sthu.StudentenhuisID = (int)sdr["StudenthuisID"];
+                                sthu.Naam = (string)sdr["NaamHuis"]; 
+                            }
+
+                        }
+                        return sthu;
                     }
                 }
             }
@@ -179,7 +193,7 @@ namespace KillerApp.Data.Contexts
                 Console.Write(Ex.Message);
             }
 
-            return 0;
+            return new StudentenHuis();
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

@@ -30,9 +30,9 @@ namespace KillerApp.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public int GetActiveStudentenhuisBijGebruiker(int id)
+        public StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebruikerid)
         {
-            return _studenthuisContext.GetActiveStudentenhuisBijGebruiker(id);
+            return _studenthuisContext.GetActiveStudentenhuisBijGebruiker(gebruikerid);
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)

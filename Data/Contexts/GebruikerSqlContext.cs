@@ -5,7 +5,7 @@ using KillerApp.Data.Interfaces;
 using KillerApp.Data.SQL;
 using System.Data.SqlClient;
 using static Model.Gebruiker;
-
+using KillerApp.Model;
 
 namespace Data.Contexts
 {
@@ -170,12 +170,20 @@ namespace Data.Contexts
                     using (SqlCommand cmd = new SqlCommand())
                     {
 
-                        string qry = $"UPDATE Table_Gebruiker SET Gebruikersnaam = '{g.Gebruikersnaam}',Voornaam = '{g.Voornaam}',Achternaam = '{g.Achternaam}'," +
-                                        $"Geboortedatum = '{g.Geboortedatum}',MobielNummer = '{g.Mobielnummer}',MailAdress = '{g.Email}',Geslacht = '{(int)g.hetGeslacht}'" +
-                                            $"WHERE GebruikerID = {g.GebruikerID}";
+                        string qry = $"UPDATE Table_Gebruiker SET Gebruikersnaam = @gebruikersnaam ,Voornaam = @voornaam ,Achternaam = @achternaam," +
+                                        $"Geboortedatum = @gebortedatum ,MobielNummer = @mobielnummer ,MailAdress = @mailadress ,Geslacht = @geslacht" +
+                                            $"WHERE GebruikerID = @gebruikerid";
 
                         cmd.CommandText = qry;
 
+                        cmd.Parameters.AddWithValue("@gebruikersnaam", g.Gebruikersnaam);
+                        cmd.Parameters.AddWithValue("@voornaam", g.Voornaam);
+                        cmd.Parameters.AddWithValue("@achternaam", g.Achternaam);
+                        cmd.Parameters.AddWithValue("@gebortedatum", g.Geboortedatum);
+                        cmd.Parameters.AddWithValue("@mobielnummer", g.Mobielnummer);
+                        cmd.Parameters.AddWithValue("@mailadress", g.Email);
+                        cmd.Parameters.AddWithValue("@geslacht", (int)g.hetGeslacht);
+                        cmd.Parameters.AddWithValue("@gebruikerid", g.GebruikerID);
 
                         cmd.Connection = conn;
 
@@ -235,8 +243,7 @@ namespace Data.Contexts
                                     sdr["MobielNummer"].ToString(),
                                     (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
                                     sdr["MailAdress"].ToString(),
-                                    Convert.ToInt32(sdr["GebruikerID"]),
-                                    Convert.ToInt32(sdr["StudentenhuisID"]));
+                                    Convert.ToInt32(sdr["GebruikerID"]));
 
                                 gebr.SetWachtwoord(sdr["wachtwoord"].ToString());
                             }
@@ -257,6 +264,49 @@ namespace Data.Contexts
             }
 
             return gebr;
+        }
+
+        public QueryFeedback VoegActifiteitToe(Activiteit activiteit)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+                        string qry = "Insert INTO [dbo].[Table_Activiteit] Values(@ingelogdegebruiker,@studentenhuisid,@datum,@beschrijving,@bedrag,@tegengebruiker)";
+
+                        cmd.CommandText = qry;
+
+                        cmd.Parameters.AddWithValue("@ingelogdegebruiker",activiteit.IngelogdeGebruiker);
+                        cmd.Parameters.AddWithValue("@studentenhuisid", activiteit.StudentenhuisID);
+                        cmd.Parameters.AddWithValue("@datum", activiteit.Datum);
+                        cmd.Parameters.AddWithValue("@beschrijving", activiteit.Beschrijving);
+                        cmd.Parameters.AddWithValue("@bedrag", activiteit.Bedrag);
+                        cmd.Parameters.AddWithValue("@tegengebruiker", activiteit.TegenGebruiker);
+
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        feedback.Gelukt = true;
+                        return feedback;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                feedback.Gelukt = false;
+                feedback.Message = ex.Message;
+                return feedback;
+            }
+
         }
     }
 }

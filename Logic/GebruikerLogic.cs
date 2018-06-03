@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KillerApp.Data.Repositories;
+using KillerApp.Model;
 using Model;
 
 namespace Logic
@@ -37,6 +38,11 @@ namespace Logic
         public QueryFeedback updateGebruiker(Gebruiker gebruiker)
         {
             return _gebruikerRepo.updateGebruiker(gebruiker);
+        }
+
+        public QueryFeedback VoegActifiteitToe(Activiteit activiteit)
+        {
+            return _gebruikerRepo.VoegActifiteitToe(activiteit);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 using KillerApp.Data.Interfaces;
 using KillerApp.Data.Contexts;
 using Model;
+using KillerApp.Model;
 
 namespace KillerApp.Data.Repositories
 {
@@ -40,6 +41,11 @@ namespace KillerApp.Data.Repositories
         public QueryFeedback updateGebruiker(Gebruiker gebruiker)
         {
             return _gebruikerContext.updateGebruiker(gebruiker);
+        }
+
+        public QueryFeedback VoegActifiteitToe(Activiteit activiteit)
+        {
+            return _gebruikerContext.VoegActifiteitToe(activiteit);
         }
     }
 }

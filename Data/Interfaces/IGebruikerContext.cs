@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Model;
+using KillerApp.Model;
 
 
 namespace KillerApp.Data.Interfaces
@@ -13,5 +14,6 @@ namespace KillerApp.Data.Interfaces
         QueryFeedback AddGebruiker(Gebruiker gebruiker);
         QueryFeedback updateGebruiker(Gebruiker gebruiker);
         Gebruiker CheckLogin(Gebruiker gebruiker);
+        QueryFeedback VoegActifiteitToe(Activiteit activiteit);
     }
 }

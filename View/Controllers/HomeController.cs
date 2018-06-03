@@ -24,15 +24,10 @@ namespace View.Controllers
 
         public IActionResult Index(Gebruiker gebr)
         {
-            DashboardViewModel viewmodel = new DashboardViewModel();
-
-            viewmodel.gebruiker = gebr;
-
-            viewmodel.Bewonersaldos = studentenhuislogic.AlleactieveBewonersaldos(studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID));
 
             if (User.Identity.IsAuthenticated)
             {
-                return View("Dashboard", viewmodel);
+                return RedirectToAction("Dashboard","home",gebr);
             }
             else
             {
@@ -40,9 +35,15 @@ namespace View.Controllers
             }
         }
 
-        public IActionResult Dashboard()
+        public IActionResult Dashboard(Gebruiker gebr)
         {
-            return Content("Hier komt het dashboard");
+            DashboardViewModel viewmodel = new DashboardViewModel();
+
+            viewmodel.gebruiker = gebr;
+            viewmodel.studentenhuis = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
+            viewmodel.Bewonersaldos = studentenhuislogic.AlleactieveBewonersaldos(studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID).StudentenhuisID);
+
+            return View(viewmodel);
         }
 
         public IActionResult Error()
@@ -92,10 +93,22 @@ namespace View.Controllers
         }
 
         [HttpPost]
-        public IActionResult VoegActiviteitToe()
+        public IActionResult VoegActiviteitToe(DateTime DatumVanActiviteit,string Beschrijving,
+                                                string Bedrag, int TegenGebruiker, int IngelogdeGebruiker,int studentenhuisid)
         {
+            
 
-            return Content("lol");
+            Activiteit activi = new Activiteit(DatumVanActiviteit,Beschrijving,Convert.ToInt32(Bedrag),TegenGebruiker,IngelogdeGebruiker, studentenhuisid);
+            
+            if (gebruikLogic.VoegActifiteitToe(activi).Gelukt)
+            {
+                return RedirectToAction("Dashboard","Home");
+            }
+            else
+            {
+                return Content("hetis niet gelukt");
+            }
+            
         }
     }
 }

@@ -42,7 +42,7 @@ namespace KillerApp.Data.Contexts
             throw new NotImplementedException();
         }
 
-        public int GetActiveStudentenhuisBijGebruiker(int id)
+        public StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebruikerid)
         {
            throw new NotImplementedException();
             

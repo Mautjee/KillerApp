@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KillerApp.Data.Interfaces;
+using KillerApp.Model;
 using Model;
 
 using static Model.Gebruiker;
@@ -66,6 +67,11 @@ namespace Data.Contexts
         }
 
         public QueryFeedback updateGebruiker(Gebruiker Ngebruiker)
+        {
+            throw new NotImplementedException();
+        }
+
+        public QueryFeedback VoegActifiteitToe(Activiteit activiteit)
         {
             throw new NotImplementedException();
         }
