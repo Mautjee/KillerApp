@@ -1,0 +1,17 @@
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=KillerApp.View
+--content-root=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Partial\WijzigGebruiker.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Gebruiker\GebruikerDetail.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Gebruiker\index.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Gebruiker\Toevoegen.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Gebruiker\ViewDetailPartial.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Home\Dashboard.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Home\Index.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Shared\Error.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Shared\_Layout.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Shared\_ValidationScriptsPartial.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\Studentenhuis\index.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\_ViewImports.cshtml
+--file=C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\View\Views\_ViewStart.cshtml

@@ -23,7 +23,8 @@ namespace KillerApp.View.Controllers
 
         public IActionResult ViewDetailPartial(int id)
         {
-            return PartialView(gebruikLogic.GetbyID(id));
+            Gebruiker gebr = gebruikLogic.GetbyID(id);
+            return PartialView(gebr);
         }
 
 

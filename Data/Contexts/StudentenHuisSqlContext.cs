@@ -10,15 +10,18 @@ using static Model.Gebruiker;
 
 namespace KillerApp.Data.Contexts
 {
-    public class StudentenHuisSqlContext : SqlCon , IStudentenhuisContext
+    public class StudentenHuisSqlContext : IStudentenhuisContext
     {
+        private SqlCon sqlcon = new SqlCon();
         public List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId)
         {
             List<Bewonersaldo> ret = new List<Bewonersaldo>();
 
+            
+
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
@@ -63,7 +66,7 @@ namespace KillerApp.Data.Contexts
             StudentenHuis huis = new StudentenHuis();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -117,7 +120,7 @@ namespace KillerApp.Data.Contexts
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -157,7 +160,7 @@ namespace KillerApp.Data.Contexts
             StudentenHuis sthu = new StudentenHuis();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())

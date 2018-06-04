@@ -13,7 +13,7 @@ namespace KillerApp.View.Models
         public StudentenHuis studentenhuis { get; set; }
         public Activiteit aciviteit { get; set; }
         public List<Bewonersaldo> Bewonersaldos { get; set; }
-
+        public List<Activiteit> OverzichtActiviteit { get; set; }
 
     }
 }

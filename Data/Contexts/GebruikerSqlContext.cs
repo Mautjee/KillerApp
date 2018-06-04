@@ -9,10 +9,10 @@ using KillerApp.Model;
 
 namespace Data.Contexts
 {
-    public class GebruikerSqlContext : SqlCon, IGebruikerContext
+    public class GebruikerSqlContext : IGebruikerContext
     {
 
-
+        private SqlCon sqlcon = new SqlCon();
         public List<Gebruiker> GetAllGebruikers()
         {
             List<Gebruiker> list = new List<Gebruiker>();
@@ -20,7 +20,7 @@ namespace Data.Contexts
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -41,15 +41,15 @@ namespace Data.Contexts
                             {
                                 while (sdr.Read())
                                 {
-                                    list.Add(new Gebruiker(sdr["Gebruikersnaam"].ToString(),
+                                    list.Add(new Gebruiker(
+                                        sdr["Gebruikersnaam"].ToString(),
                                         sdr["Voornaam"].ToString(),
                                         sdr["Achternaam"].ToString(), 
                                         Convert.ToDateTime(sdr["Geboortedatum"]),
                                         sdr["MobielNummer"].ToString(), 
                                         (Geslacht)Convert.ToInt32(sdr["Geslacht"]), 
                                         sdr["MailAdress"].ToString(), 
-                                        Convert.ToInt32(sdr["GebruikerID"]), 
-                                        Convert.ToInt32(sdr["StudentenhuisID"])));
+                                        Convert.ToInt32(sdr["GebruikerID"])));
                                 }
                             }
 
@@ -73,7 +73,7 @@ namespace Data.Contexts
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -102,8 +102,7 @@ namespace Data.Contexts
                                         sdr["MobielNummer"].ToString(),
                                         (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
                                        sdr["MailAdress"].ToString(),
-                                       Convert.ToInt32(sdr["GebruikerID"]),
-                                       Convert.ToInt32(sdr["StudentenhuisID"]));
+                                       Convert.ToInt32(sdr["GebruikerID"]));
 
                                 gebr.SetWachtwoord(sdr["wachtwoord"].ToString());
                             }
@@ -125,7 +124,7 @@ namespace Data.Contexts
             QueryFeedback feedback = new QueryFeedback();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -164,7 +163,7 @@ namespace Data.Contexts
             QueryFeedback feedback = new QueryFeedback();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -212,7 +211,7 @@ namespace Data.Contexts
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())
@@ -271,7 +270,7 @@ namespace Data.Contexts
             QueryFeedback feedback = new QueryFeedback();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionstring()))
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
                 {
 
                     using (SqlCommand cmd = new SqlCommand())

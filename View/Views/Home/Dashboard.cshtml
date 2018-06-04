@@ -21,20 +21,18 @@
             <div class="dasboard-container">
                 <h2>Overzicht huis (@Model.studentenhuis.Naam)</h2>
                 <div class="dashboardcontent-container">
-                    <ul id="platformLinks">
+
                         @foreach ( Bewonersaldo b in Model.Bewonersaldos)
                         {
-                            <li><a id="viewdetailpartial" >@b.Voornaam</a> (@b.Saldo)</li>
+                            <h3 id="viewdetailpartial" >@b.Voornaam / Saldo = @b.Saldo </h3> 
                         }
-                    </ul>
-                </div>
-                <div class="link-container">
+                  
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-18">
+        <div class="col-sm-6">
             <div class="dasboard-container">
                 <h2>Activiteit</h2>
                 <div class="dashboardcontent-container">
@@ -44,22 +42,22 @@
                         <input value="@Model.studentenhuis.StudentenhuisID" type="hidden" id="studentenhuisid" name="studentenhuisid" />
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="DatumVanActiviteit">Waneer heeft de activiteit plaatsgevonden</label>
+                            <label class="control-label col-sm-10" for="DatumVanActiviteit">Waneer heeft de activiteit plaatsgevonden</label>
                             <div class="col-sm-10 input-small">
-                                <input class="form-control col-sm-3" asp-for="@Model.aciviteit.Datum" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
+                                <input class="form-control col-sm-6" asp-for="@Model.aciviteit.Datum" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="Beschrijving">Beschrijving van activiteit</label>
+                            <label class="control-label col-sm-10" for="Beschrijving">Beschrijving van activiteit</label>
                             <div class="col-sm-10 input-small">
-                                <input class="form-control col-sm-3" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
+                                <input class="form-control col-sm-6" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="Bedrag">Bedrag van de activiteit</label>
+                            <label class="control-label col-sm-10" for="Bedrag">Bedrag van de activiteit</label>
                             <div class="col-sm-10 input-small">
                                 <input class="form-control col-sm-3" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
                             </div>
@@ -67,24 +65,37 @@
 
 
                         <div class="form-group">
-                            <select name="TegenGebruiker" id="TegenGebruiker">
-                                @foreach (Bewonersaldo b in Model.Bewonersaldos)
-                                {
-                                    <option value="@b.GebruikerID">@b.Voornaam </option>
-                                }
-                            </select>
+                            <label class="control-label col-sm-10" for="TegenGebruiker">Voor wie heb je iets gekocht</label>
+                            <div class="col-sm-10 input-small">
+                                <select name="TegenGebruiker" id="TegenGebruiker">
+                                    @foreach (Bewonersaldo b in Model.Bewonersaldos)
+                                    {
+                                        <option value="@b.GebruikerID">@b.Voornaam </option>
+                                    }
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2">&nbsp;</label>
+                            <label class="control-label col-sm-6">&nbsp;</label>
                             <div class="col-sm-10">
                                 <input type="submit" value="Verstuur" class="submit" />
                             </div>
                         </div>
                     </form>
-                    </div>
                 </div>
             </div>
+        </div> 
+        <div class="col-sm-6">
+            <div class="dasboard-container">
+                <h2>Overzicht Actions</h2>
+                <div class="dashboardcontent-container">
+
+                   
+
+                </div>
+            </div>
+        </div>`
     </div>
 </div>
 

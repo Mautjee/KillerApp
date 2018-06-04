@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>KillerApp.Data</id>
+    <version>1.0.0</version>
+    <authors>KillerApp.Data</authors>
+    <owners>KillerApp.Data</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="KillerApp.Model" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Data\bin\Release\netcoreapp2.0\KillerApp.Data.dll" target="lib\netcoreapp2.0\KillerApp.Data.dll" />
+  </files>
+</package>

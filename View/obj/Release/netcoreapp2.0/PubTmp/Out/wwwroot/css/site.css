@@ -1,0 +1,92 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+/*#region Dashboard*/
+.dasboard-container {
+    background: #f5f5f5;
+    height: 25vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+    .dasboard-container > h2 {
+        padding: 10px;
+        padding-left: 20px;
+        background: rgb(33, 34, 34);
+        color: #f5f5f5;
+    }
+
+.account-image {
+    color: rgb(235, 235, 235);
+    font-size: 10em;
+    border-radius: 75px;
+}
+
+.usericon-background {
+    position: absolute;
+    background: #4f7fcc;
+    border-radius: 75px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border: 20px solid #f5f5f5;
+}
+
+.dashboardcontent-container {
+    text-align: center;
+    height: 43vh;
+    font-family: "Microsoft Tai le";
+    overflow-x: hidden;
+}
+
+.dashboard-row {
+    border-bottom: 3px solid #fff;
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 25px;
+}
+
+    .dashboard-row > p {
+        display: inline-block;
+    }
+
+    .dashboard-row > a {
+        color: rgb(34, 34, 34);
+        text-align: right;
+        display: inline-block;
+        font-size: 22px;
+        padding-right: 20%;
+    }
+/*#endregion*/

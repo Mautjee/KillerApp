@@ -14,6 +14,9 @@ using KillerApp.Model;
 using KillerApp.View.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace View.Controllers
 {
@@ -22,22 +25,21 @@ namespace View.Controllers
         GebruikerLogic gebruikLogic = GebruikersFactory.UseSqlContext();
         StudentenhuisLogic studentenhuislogic = StudentenhuisFactory.UseSqlContext();
 
+        const string Sessionname = "GerbuikerData";
         public IActionResult Index(Gebruiker gebr)
         {
-
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Dashboard","home",gebr);
-            }
-            else
-            {
-                return View(new Gebruiker());
-            }
+            return View(new Gebruiker());       
         }
 
-        public IActionResult Dashboard(Gebruiker gebr)
+        public IActionResult Dashboard()
         {
+            if (!HttpContext.Session.Keys.Contains(Sessionname))
+            {
+                RedirectToAction("Index", "Home");
+            }
             DashboardViewModel viewmodel = new DashboardViewModel();
+
+            Gebruiker gebr = GetgebruikerfromSession();
 
             viewmodel.gebruiker = gebr;
             viewmodel.studentenhuis = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
@@ -56,6 +58,9 @@ namespace View.Controllers
         {
             
             var g = gebruikLogic.CheckLogin(gebruiker);
+
+            HttpContext.Session.SetString(Sessionname, JsonConvert.SerializeObject(g));
+
             if (g.GebruikerID > 0)
             {
                 PerformLogin(gebruiker);
@@ -64,7 +69,7 @@ namespace View.Controllers
                 {
                     return Redirect(HttpContext.Request.Query["ReturnUrl"]);
                 }
-                return RedirectToAction("Index", "Home",g);
+                return RedirectToAction("Dashboard", "Home");
             }
 
             return Content("INlog MIslukt");
@@ -72,10 +77,10 @@ namespace View.Controllers
 
         private void PerformLogin(Gebruiker gebruiker)
         {
+            
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, gebruiker.Gebruikersnaam),
-                new Claim("UserID", gebruiker.GebruikerID.ToString())
+                new Claim(ClaimTypes.Name, gebruiker.Gebruikersnaam)
 
             };
 
@@ -109,6 +114,17 @@ namespace View.Controllers
                 return Content("hetis niet gelukt");
             }
             
+        }
+
+        private Gebruiker GetgebruikerfromSession()
+        {
+            var accObject = HttpContext.Session.GetString(Sessionname);
+
+            Gebruiker gebr = new Gebruiker();
+            if (accObject != null)
+                gebr = JsonConvert.DeserializeObject<Gebruiker>(accObject);
+
+            return gebr;
         }
     }
 }
