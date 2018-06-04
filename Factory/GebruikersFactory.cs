@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Data.Contexts;
-using Data.Repositories;
+using KillerApp.Data.Repositories;
 using Logic;
 
 namespace KillerApp.Factory

@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Model;
+using KillerApp.Model;
 
 namespace Logic
 {
     interface IGebruikerLogic
     {
-        bool LogtIn(string Gebruikersnaam, string Wachtwoord);
-        bool MaaktNieuwStudentenuis(StudentenHuis studentenhuis);
         List<Gebruiker> GetAllGebruikers();
+        Gebruiker GetbyID(int id);
+        QueryFeedback AddGebruiker(Gebruiker gebruiker);
+        QueryFeedback updateGebruiker(Gebruiker gebruiker);
+        Gebruiker CheckLogin(Gebruiker gebruiker);
+        QueryFeedback VoegActifiteitToe(Activiteit activiteit);
     }
 }

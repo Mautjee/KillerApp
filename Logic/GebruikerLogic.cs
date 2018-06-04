@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.Repositories;
+using KillerApp.Data.Repositories;
+using KillerApp.Model;
 using Model;
 
 namespace Logic
@@ -14,19 +15,34 @@ namespace Logic
             _gebruikerRepo = gebruikersrepo;
         }
 
+        public QueryFeedback AddGebruiker(Gebruiker gebruiker)
+        {
+            return _gebruikerRepo.AddGebruiker(gebruiker);
+        }
+
+        public Gebruiker CheckLogin(Gebruiker gebruiker)
+        {
+            return _gebruikerRepo.CheckLogin(gebruiker);
+        }
+
         public List<Gebruiker> GetAllGebruikers()
         {
            return  _gebruikerRepo.GetAllGebruikers();
         }
 
-        public bool LogtIn(string Gebruikersnaam, string Wachtwoord)
+        public Gebruiker GetbyID(int id)
         {
-            throw new NotImplementedException();
+            return _gebruikerRepo.GetbyID(id);
         }
 
-        public bool MaaktNieuwStudentenuis(StudentenHuis studentenhuis)
+        public QueryFeedback updateGebruiker(Gebruiker gebruiker)
         {
-            throw new NotImplementedException();
+            return _gebruikerRepo.updateGebruiker(gebruiker);
+        }
+
+        public QueryFeedback VoegActifiteitToe(Activiteit activiteit)
+        {
+            return _gebruikerRepo.VoegActifiteitToe(activiteit);
         }
     }
 }

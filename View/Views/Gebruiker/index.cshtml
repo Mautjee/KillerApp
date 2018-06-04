@@ -1,0 +1,28 @@
+﻿@using Model
+@model IEnumerable<Model.Gebruiker>
+
+@{
+    ViewData["Title"] = "Gebruiker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/GebrukerJS.js"></script>
+</head>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>All Gebruikers</h2>
+        <ul id="platformLinks">
+            @foreach (Gebruiker g in Model)
+        {
+            <li><a asp-action="ViewDetailPartial" id="viewdetailpartial" onclick="ShowReserveringsForm(event)" asp-route-id="@g.GebruikerID">@g.Gebruikersnaam</a> (@g.Voornaam @g.Achternaam)</li>
+    }
+        </ul>
+       <a asp-action="Toevoegen" class="btn btn-default">Voeg gebruiker toe</a>
+    </div>
+    <div class="col-md-6" id="GebruikerDetail" name="GebruikerDetail">
+    </div>
+
+</div>

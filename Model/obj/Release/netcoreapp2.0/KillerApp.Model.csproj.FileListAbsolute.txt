@@ -1,0 +1,9 @@
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\bin\Release\netcoreapp2.0\KillerApp.Model.deps.json
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\bin\Release\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\bin\Release\netcoreapp2.0\KillerApp.Model.pdb
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\obj\Release\netcoreapp2.0\KillerApp.Model.csprojAssemblyReference.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\obj\Release\netcoreapp2.0\KillerApp.Model.csproj.CoreCompileInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\obj\Release\netcoreapp2.0\KillerApp.Model.AssemblyInfoInputs.cache
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\obj\Release\netcoreapp2.0\KillerApp.Model.AssemblyInfo.cs
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\obj\Release\netcoreapp2.0\KillerApp.Model.dll
+C:\Users\mauro\stack\School Fontys\Semester 2\Software\GithubVersie\Model\obj\Release\netcoreapp2.0\KillerApp.Model.pdb

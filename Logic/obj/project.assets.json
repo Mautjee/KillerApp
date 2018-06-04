@@ -2,6 +2,31 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "Microsoft.AspNetCore.Cryptography.Internal/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -213,6 +238,9 @@
       "KillerApp.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.0"
+        },
         "compile": {
           "bin/placeholder/KillerApp.Model.dll": {}
         },
@@ -223,6 +251,32 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNetCore.Cryptography.Internal/1.1.0": {
+      "sha512": "Oy0pgxQkusvQwIrwbHvGVZhwk59qRVKxcer6HsWw0jCEq2LoQ7mj7x7DovE5ub8UvffLYWx77NMF5uwPtkl8KA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.internal/1.1.0",
+      "files": [
+        "lib/net451/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net451/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "microsoft.aspnetcore.cryptography.internal.1.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.internal.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/1.1.0": {
+      "sha512": "cVlVvsH4/9G6AjrlXVO6unCzuFHnDCGRhPJNufOCclxpwImZUdhi+EIh09gSaCJ55gme2/Vn0ycig0cF9gKcbg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/1.1.0",
+      "files": [
+        "lib/net451/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net451/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "microsoft.aspnetcore.cryptography.keyderivation.1.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
     "Microsoft.NETCore.App/2.0.0": {
       "sha512": "/mzXF+UtZef+VpzzN88EpvFq5U6z4rj54ZMq/J968H6pcvyLOmcupmTRpJ3CJm8ILoCGh9WI7qpDdiKtuzswrQ==",
       "type": "package",
@@ -700,42 +754,39 @@
   },
   "packageFolders": {
     "C:\\Users\\mauro\\.nuget\\packages\\": {},
-    "C:\\Program Files\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Logic\\KillerApp.Logic.csproj",
+      "projectUniqueName": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Logic\\KillerApp.Logic.csproj",
       "projectName": "KillerApp.Logic",
-      "projectPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Logic\\KillerApp.Logic.csproj",
+      "projectPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Logic\\KillerApp.Logic.csproj",
       "packagesPath": "C:\\Users\\mauro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Logic\\obj\\",
+      "outputPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\mauro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Data\\KillerApp.Data.csproj": {
-              "projectPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Data\\KillerApp.Data.csproj"
+            "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Data\\KillerApp.Data.csproj": {
+              "projectPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Data\\KillerApp.Data.csproj"
             },
-            "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Model\\KillerApp.Model.csproj": {
-              "projectPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\BackEndOpzet\\Model\\KillerApp.Model.csproj"
+            "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Model\\KillerApp.Model.csproj": {
+              "projectPath": "C:\\Users\\mauro\\stack\\School Fontys\\Semester 2\\Software\\GithubVersie\\Model\\KillerApp.Model.csproj"
             }
           }
         }
