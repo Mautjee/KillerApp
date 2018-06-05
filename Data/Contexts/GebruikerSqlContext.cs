@@ -45,9 +45,6 @@ namespace Data.Contexts
                                         sdr["Gebruikersnaam"].ToString(),
                                         sdr["Voornaam"].ToString(),
                                         sdr["Achternaam"].ToString(), 
-                                        Convert.ToDateTime(sdr["Geboortedatum"]),
-                                        sdr["MobielNummer"].ToString(), 
-                                        (Geslacht)Convert.ToInt32(sdr["Geslacht"]), 
                                         sdr["MailAdress"].ToString(), 
                                         Convert.ToInt32(sdr["GebruikerID"])));
                                 }
@@ -98,9 +95,6 @@ namespace Data.Contexts
                                        sdr["Gebruikersnaam"].ToString(),
                                         sdr["Voornaam"].ToString(),
                                          sdr["Achternaam"].ToString(),
-                                        Convert.ToDateTime(sdr["Geboortedatum"]),
-                                        sdr["MobielNummer"].ToString(),
-                                        (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
                                        sdr["MailAdress"].ToString(),
                                        Convert.ToInt32(sdr["GebruikerID"]));
 
@@ -130,12 +124,21 @@ namespace Data.Contexts
                     using (SqlCommand cmd = new SqlCommand())
                     {
                     
-                        string qry = $"INSERT INTO Table_Gebruiker(Gebruikersnaam,Wachtwoord,Voornaam,Achternaam,Geboortedatum,MobielNummer,MailAdress,StudentenhuisID,Geslacht)" +
-                                        $" VALUES('{g.Gebruikersnaam}','{g.Wachtwoord}','{g.Voornaam}','{g.Achternaam}'" +
-                                        $",'{g.Geboortedatum.ToString("yyMMdd")}','{g.Mobielnummer}','{g.Email}'," +
-                                        $"'{g.StudentenhuisID}','{(int)g.hetGeslacht}')";
+                        string qry = @"INSERT INTO Table_Gebruiker(Gebruikersnaam,Wachtwoord,Voornaam,Achternaam,MailAdress) 
+                                        VALUES(@gebruikersnaam,@wachtwoord,@voornaam,@achternaam,@email)";
 
                         cmd.CommandText = qry;
+
+                        cmd.Parameters.AddWithValue("@gebruikersnaam", g.Gebruikersnaam);
+                        cmd.Parameters.AddWithValue("@wachtwoord", g.Wachtwoord);
+
+                        cmd.Parameters.AddWithValue("@voornaam", g.Voornaam);
+                        cmd.Parameters.AddWithValue("@achternaam", g.Achternaam);
+
+                        cmd.Parameters.AddWithValue("@email", g.Email);
+
+
+
 
 
                         cmd.Connection = conn;
@@ -169,20 +172,18 @@ namespace Data.Contexts
                     using (SqlCommand cmd = new SqlCommand())
                     {
 
-                        string qry = $"UPDATE Table_Gebruiker SET Gebruikersnaam = @gebruikersnaam ,Voornaam = @voornaam ,Achternaam = @achternaam," +
-                                        $"Geboortedatum = @gebortedatum ,MobielNummer = @mobielnummer ,MailAdress = @mailadress ,Geslacht = @geslacht" +
-                                            $"WHERE GebruikerID = @gebruikerid";
+                        string qry = @"UPDATE Table_Gebruiker SET Gebruikersnaam = @gebruikersnaam ,Voornaam = @voornaam ,Achternaam = @achternaam, MailAdress = @mailadress  
+                                            WHERE GebruikerID = @gebruikerid";
 
                         cmd.CommandText = qry;
 
                         cmd.Parameters.AddWithValue("@gebruikersnaam", g.Gebruikersnaam);
                         cmd.Parameters.AddWithValue("@voornaam", g.Voornaam);
                         cmd.Parameters.AddWithValue("@achternaam", g.Achternaam);
-                        cmd.Parameters.AddWithValue("@gebortedatum", g.Geboortedatum);
-                        cmd.Parameters.AddWithValue("@mobielnummer", g.Mobielnummer);
+
+
                         cmd.Parameters.AddWithValue("@mailadress", g.Email);
-                        cmd.Parameters.AddWithValue("@geslacht", (int)g.hetGeslacht);
-                        cmd.Parameters.AddWithValue("@gebruikerid", g.GebruikerID);
+
 
                         cmd.Connection = conn;
 
@@ -238,9 +239,6 @@ namespace Data.Contexts
                                     sdr["Gebruikersnaam"].ToString(),
                                     sdr["Voornaam"].ToString(),
                                     sdr["Achternaam"].ToString(),
-                                    Convert.ToDateTime(sdr["Geboortedatum"]),
-                                    sdr["MobielNummer"].ToString(),
-                                    (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
                                     sdr["MailAdress"].ToString(),
                                     Convert.ToInt32(sdr["GebruikerID"]));
 

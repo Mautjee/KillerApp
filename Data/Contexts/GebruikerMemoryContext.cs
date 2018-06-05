@@ -20,9 +20,9 @@ namespace Data.Contexts
             {
 
                 gebruikers.Add(new Gebruiker("Mautjee", "Mauro", "Eijsenring",
-                    Convert.ToDateTime("06-19-1997"), "0623947539", (Geslacht)0, "mauro@eijsnering.com",gebruikerID++));
+                    "mauro@eijsnering.com",gebruikerID++));
                 gebruikers.Add(new Gebruiker( "Johnie", "John", "Doe",
-                   Convert.ToDateTime("07-9-1995"), "06347593404", (Geslacht)0, "john@Doe.com", gebruikerID++));
+                    "john@Doe.com", gebruikerID++));
             }
         }
 
@@ -37,7 +37,7 @@ namespace Data.Contexts
         {
             QueryFeedback Data = new QueryFeedback();
             Gebruiker g = new Gebruiker("Mautjee", "Mauro", "Eijsenring",
-                    Convert.ToDateTime("06-19-1997"), "0623947539", (Geslacht)0, "mauro@eijsnering.com", gebruikerID++);
+                    "mauro@eijsnering.com", gebruikerID++);
             g.SetWachtwoord("1234");
 
             if (gebruiker.Gebruikersnaam == g.Gebruikersnaam && gebruiker.Wachtwoord == g.Wachtwoord)

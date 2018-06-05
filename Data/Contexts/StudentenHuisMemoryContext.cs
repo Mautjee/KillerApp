@@ -53,7 +53,12 @@ namespace KillerApp.Data.Contexts
             throw new NotImplementedException();
         }
 
-        public bool voegBewonertoe(Gebruiker gebruiker)
+        public QueryFeedback voegBewonertoe(int gebruikerID, int studentenhuisID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis)
         {
             throw new NotImplementedException();
         }

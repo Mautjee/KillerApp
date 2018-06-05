@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KillerApp.Model", "Model\Ki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KillerApp.View", "View\KillerApp.View.csproj", "{54C7CF25-3D2F-446D-80D3-F8F5BF09E65C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerApp.Factory", "Factory\KillerApp.Factory.csproj", "{74171F45-DFF8-4072-B881-15EF0FB6736C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KillerApp.Factory", "Factory\KillerApp.Factory.csproj", "{74171F45-DFF8-4072-B881-15EF0FB6736C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

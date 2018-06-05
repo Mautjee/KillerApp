@@ -10,9 +10,10 @@ namespace KillerApp.Logic
     {
         List<StudentenHuis> GetallStudentenhuizen();
         StudentenHuis GetallBewoners(int studenthuisId);
-        bool voegBewonertoe(Gebruiker gebruiker);
+        QueryFeedback voegBewonertoe(int gebruikerID, int studentenhuisID);
         bool verwijderBewoner(Gebruiker gebruiker);
         StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebruikerid);
         List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId);
+        QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis);
     }
 }

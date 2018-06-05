@@ -27,7 +27,7 @@ namespace KillerApp.Data.Repositories
 
         public List<StudentenHuis> GetallStudentenhuizen()
         {
-            throw new NotImplementedException();
+            return _studenthuisContext.GetallStudentenhuizen();
         }
 
         public StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebruikerid)
@@ -40,9 +40,14 @@ namespace KillerApp.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public bool voegBewonertoe(Gebruiker gebruiker)
+        public QueryFeedback voegBewonertoe(int gebruikerID, int studentenhuisID)
         {
-            throw new NotImplementedException();
+            return _studenthuisContext.voegBewonertoe(gebruikerID, studentenhuisID);
+        }
+
+        public QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis)
+        {
+            return _studenthuisContext.MakeNewStudentenhuis(naamniewestudentenhuis);
         }
     }
 }

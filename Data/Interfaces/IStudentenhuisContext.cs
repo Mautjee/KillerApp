@@ -11,9 +11,10 @@ namespace KillerApp.Data.Interfaces
         List<StudentenHuis> GetallStudentenhuizen();
         StudentenHuis GetAllBewoners(int studenthuisId);
         List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId);
-        bool voegBewonertoe(Gebruiker gebruiker);
+        QueryFeedback voegBewonertoe(int gebruikerID, int studentenhuisID);
         bool verwijderBewoner(Gebruiker gebruiker);
         StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebrukerid);
+        QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis);
 
     }
 }
