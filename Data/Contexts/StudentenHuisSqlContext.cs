@@ -13,6 +13,7 @@ namespace KillerApp.Data.Contexts
     public class StudentenHuisSqlContext : IStudentenhuisContext
     {
         private SqlCon sqlcon = new SqlCon();
+
         public List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId)
         {
             List<Bewonersaldo> ret = new List<Bewonersaldo>();
@@ -25,7 +26,7 @@ namespace KillerApp.Data.Contexts
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        string query = $"Select GebruikerID, Voornaam, Saldo from vwActiveStudentenhuisGebruikers WHERE studenthuisid = 1";
+                        string query = $"Select GebruikerID, Voornaam, Saldo from vwActiveStudentenhuisGebruikers WHERE studenthuisid = @studentenhuisid";
 
                         cmd.CommandText = query;
                         cmd.Connection = conn;
@@ -90,12 +91,9 @@ namespace KillerApp.Data.Contexts
                                        sdr["Gebruikersnaam"].ToString(),
                                         sdr["Voornaam"].ToString(),
                                          sdr["Achternaam"].ToString(),
-                                        Convert.ToDateTime(sdr["Geboortedatum"]),
-                                        sdr["MobielNummer"].ToString(),
-                                        (Geslacht)Convert.ToInt32(sdr["Geslacht"]),
                                        sdr["MailAdress"].ToString(),
-                                       Convert.ToInt32(sdr["GebruikerID"]),
-                                       Convert.ToInt32(sdr["StudentenhuisID"])));
+                                       Convert.ToInt32(sdr["GebruikerID"])
+                                      ));
 
                                 }
                             }
@@ -140,7 +138,11 @@ namespace KillerApp.Data.Contexts
                             {
                                 while (sdr.Read())
                                 {
-                                    sh.Add(new StudentenHuis());
+                                    sh.Add(new StudentenHuis
+                                    {
+                                        StudentenhuisID = (int)sdr["StudentenhuisID"],
+                                        Naam = (string)sdr["NaamHuis"]
+                                    });
                                 }
                             }
 
@@ -204,9 +206,76 @@ namespace KillerApp.Data.Contexts
             throw new NotImplementedException();
         }
 
-        public bool voegBewonertoe(Gebruiker gebruiker)
+        public QueryFeedback voegBewonertoe(int gebruikerID,int studentenhuisID)
         {
-            throw new NotImplementedException();
+            QueryFeedback feedback = new QueryFeedback();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+                        string qry = $"update Table_Gebruiker_Activiteit SET StudenthuisID = @studentenhuisID, [In] = (Select Convert (date, GETDATE())) Where GebruikerID = @gebruikerID";
+
+                        cmd.CommandText = qry;
+
+                        cmd.Parameters.AddWithValue("@studentenhuisID", studentenhuisID);
+                        cmd.Parameters.AddWithValue("@gebruikerID", gebruikerID);
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        feedback.Gelukt = true;
+                        return feedback;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                feedback.Gelukt = false;
+                feedback.Message = ex.Message;
+                return feedback;
+            };
+        }
+
+        public QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+                        string qry = $"INSERT INTO Table_Studentenhuis Values(@niewenaamhuis)";
+
+                        cmd.CommandText = qry;
+
+                        cmd.Parameters.AddWithValue("@niewenaamhuis", naamniewestudentenhuis);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        feedback.Gelukt = true;
+                        return feedback;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                feedback.Gelukt = false;
+                feedback.Message = ex.Message;
+                return feedback;
+            };
         }
     }
 }

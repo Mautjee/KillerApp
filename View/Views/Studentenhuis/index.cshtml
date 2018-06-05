@@ -1,29 +1,27 @@
-﻿@using Model;
-@model IEnumerable<Model.StudentenHuis>
+﻿@using KillerApp.View.Models;
+@using Model;
+@model StudentenHuisViewModel;
 @{
     ViewData["Title"] = "Studentenhuis";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Studentenhuis</h2>
-
 <head>
     <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/GebrukerJS.js"></script>
+    <script src="~/js/StudentHuisJS.js"></script>
 </head>
 
 <div class="row">
     <div class="col-md-6">
-        <h2>All Gebruikers</h2>
+        <h2>All Studentenhuizen</h2>
         <ul id="platformLinks">
-            @foreach (StudentenHuis h in Model)
+            @foreach (StudentenHuis studhuis in Model.allestudentenhuizen)
             {
-                <li><a asp-action="ViewDetailPartial" id="viewdetailpartial" onclick="ShowReserveringsForm(event)" asp-route-id="@h.StudentenhuisID">@h.Naam</a> (aantal bewoners @Model.Count())</li>
+            <li><a asp-action="StudentenhuisPartial" id="viewStudHuisDetailpartial" onclick="ShowGebruikersHuis(event)" asp-route-id="@studhuis.StudentenhuisID">@studhuis.Naam</a></li>
             }
         </ul>
-        <a asp-action="Toevoegen" class="btn btn-default">Voeg gebruiker toe</a>
+        <a asp-action="NiewStudentenhuis" onclick="ShowGebruikersHuis(event)" class="btn btn-default">Voeg een studentenhuis toe</a>
     </div>
-    <div class="col-md-6" id="GebruikerDetail">
+    <div class="col-md-6" id="HuisDetail">
     </div>
 
 </div>

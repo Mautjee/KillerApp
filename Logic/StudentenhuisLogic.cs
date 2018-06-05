@@ -23,7 +23,18 @@ namespace KillerApp.Logic
 
         public List<StudentenHuis> GetallStudentenhuizen()
         {
-            return _studentenhuisRepository.GetallStudentenhuizen();
+            List<StudentenHuis> liststudentenhuis = _studentenhuisRepository.GetallStudentenhuizen();
+            StudentenHuis stuhuis = new StudentenHuis();
+
+            if(liststudentenhuis[0].StudentenhuisID == 0) {
+                liststudentenhuis.RemoveAt(0);
+                return liststudentenhuis;
+            }
+            else
+            {
+                return liststudentenhuis ;
+            }
+            
         }
 
         public bool verwijderBewoner(Gebruiker gebruiker)
@@ -41,9 +52,14 @@ namespace KillerApp.Logic
             return _studentenhuisRepository.AlleactieveBewonersaldos(studentenhuisId);
         }
 
-        public bool voegBewonertoe(Gebruiker gebruiker)
+        public QueryFeedback voegBewonertoe(int gebruikerID, int studentenhuisID)
         {
-            throw new NotImplementedException();
+            return _studentenhuisRepository.voegBewonertoe(gebruikerID,studentenhuisID);
+        }
+
+        public QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis)
+        {
+            return _studentenhuisRepository.MakeNewStudentenhuis(naamniewestudentenhuis);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace View.Controllers
         GebruikerLogic gebruikLogic = GebruikersFactory.UseSqlContext();
         StudentenhuisLogic studentenhuislogic = StudentenhuisFactory.UseSqlContext();
 
-        const string Sessionname = "GerbuikerData";
+        const string UserSession = "GerbuikerData";
         public IActionResult Index(Gebruiker gebr)
         {
             return View(new Gebruiker());       
@@ -33,17 +33,27 @@ namespace View.Controllers
 
         public IActionResult Dashboard()
         {
-            if (!HttpContext.Session.Keys.Contains(Sessionname))
+            if (!HttpContext.Session.Keys.Contains(UserSession))
             {
                 RedirectToAction("Index", "Home");
             }
             DashboardViewModel viewmodel = new DashboardViewModel();
 
             Gebruiker gebr = GetgebruikerfromSession();
+            StudentenHuis studhuis = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
 
             viewmodel.gebruiker = gebr;
-            viewmodel.studentenhuis = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
-            viewmodel.Bewonersaldos = studentenhuislogic.AlleactieveBewonersaldos(studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID).StudentenhuisID);
+            viewmodel.studentenhuis = studhuis;
+
+            if (studhuis.Naam != "GeenHuis")
+            {
+                viewmodel.Bewonersaldos = studentenhuislogic.AlleactieveBewonersaldos(studhuis.StudentenhuisID);
+            }
+            else
+            {
+                viewmodel.Bewonersaldos = new List<Bewonersaldo>();
+            }
+            
 
             return View(viewmodel);
         }
@@ -59,7 +69,7 @@ namespace View.Controllers
             
             var g = gebruikLogic.CheckLogin(gebruiker);
 
-            HttpContext.Session.SetString(Sessionname, JsonConvert.SerializeObject(g));
+            HttpContext.Session.SetString(UserSession, JsonConvert.SerializeObject(g));
 
             if (g.GebruikerID > 0)
             {
@@ -72,7 +82,7 @@ namespace View.Controllers
                 return RedirectToAction("Dashboard", "Home");
             }
 
-            return Content("INlog MIslukt");
+            return Content("Inlog Mislukt omdat");
         }
 
         private void PerformLogin(Gebruiker gebruiker)
@@ -104,21 +114,21 @@ namespace View.Controllers
             
 
             Activiteit activi = new Activiteit(DatumVanActiviteit,Beschrijving,Convert.ToInt32(Bedrag),TegenGebruiker,IngelogdeGebruiker, studentenhuisid);
-            
-            if (gebruikLogic.VoegActifiteitToe(activi).Gelukt)
+            QueryFeedback feedback = gebruikLogic.VoegActifiteitToe(activi);
+            if (feedback.Gelukt)
             {
                 return RedirectToAction("Dashboard","Home");
             }
             else
             {
-                return Content("hetis niet gelukt");
+                return Content($"hetis niet gelukt omdat {feedback.Message}");
             }
             
         }
 
         private Gebruiker GetgebruikerfromSession()
         {
-            var accObject = HttpContext.Session.GetString(Sessionname);
+            var accObject = HttpContext.Session.GetString(UserSession);
 
             Gebruiker gebr = new Gebruiker();
             if (accObject != null)

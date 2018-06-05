@@ -10,53 +10,35 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="UserName">Username: </label>
             <div class="col-sm-5 input-breed">
-                <input class="form-control" type="text" id="UserName" name="UserName" value="Soepje" />
+                <input class="form-control" type="text" id="UserName" name="UserName"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="Wachtwoord">Wachtwoord: </label>
             <div class="col-sm-5 input-smal">
-                <input class="form-control" type="text" id="Wachtwoord" name="Wachtwoord" value="1234" />
+                <input class="form-control" type="password" id="Wachtwoord" name="Wachtwoord" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="DeVoornaam">Voornaam:</label>
             <div class="col-sm-5 input-breed">
-                <input class="form-control" type="text" id="DeVoornaam" name="DeVoornaam" value="Soep" />
+                <input class="form-control" type="text" id="DeVoornaam" name="DeVoornaam" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="DeAchternaam">Achternaam:</label>
             <div class="col-sm-5 input-breed">
-                <input class="form-control" type="text" id="DeAchternaam" name="DeAchternaam" value="Kippen" />
+                <input class="form-control" type="text" id="DeAchternaam" name="DeAchternaam" />
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="Mobielnummer">MobielNummer:</label>
-            <div class="col-sm-5 input-smal">
-                <input class="form-control" type="text" id="Mobielnummer" name="Mobielnummer" value="063263529" />
-            </div>
-        </div>
+
         <div class="form-group">
             <label class="control-label col-sm-3" for="Email">Email:</label>
             <div class="col-sm-5 input-smal">
-                <input class="form-control" type="text" id="Email" name="Email" value="Soep@kippen.com" />
+                <input class="form-control" type="text" id="Email" name="Email"/>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="Gebortendatum">Geboortedatum:</label>
-            <div class="col-sm-5 input-smal">
-                <input class="form-control col-sm-10" type="date" id="Gebortendatum" name="Gebortendatum" value="06-19-1997" />
-            </div>
-        </div>
-        <div class="from-group">
-            <label class="control-label col-sm-3" for="Geslacht">Geslacht:</label>
-            <div class="col-sm-5 input-smal">
-                <select asp-for="@Model.hetGeslacht" asp-items="@{Html.GetEnumSelectList<Model.Gebruiker.Geslacht>();}" class="form-control col-sm-10">
-                    <option value="0">None</option>
-                </select>
-            </div>
-        </div>
+
         <div class="form-group">
             <label class="control-label col-sm-3">&nbsp;</label>
             <div class="col-sm-10">

@@ -40,20 +40,20 @@ namespace KillerApp.View.Controllers
 
         [HttpPost]
         public ActionResult Post(string UserName, string Wachtwoord,string DeVoornaam,string DeAchternaam,
-            string MobielNummer,string Email, DateTime Gebortendatum,Gebruiker.Geslacht Geslacht)
+            string Email)
         {
             
             try
             {
 
-                Gebruiker NiewGebruiker = new Gebruiker(UserName,DeVoornaam,DeAchternaam,Gebortendatum,MobielNummer,Geslacht,Email);
+                Gebruiker NiewGebruiker = new Gebruiker(UserName,DeVoornaam,DeAchternaam,Email);
 
-                NiewGebruiker.SetWachtwoord(Hasher.Create(Wachtwoord));
+
 
                 QueryFeedback feedback = gebruikLogic.AddGebruiker(NiewGebruiker);
                 if (feedback.Gelukt)
                 {
-                    return RedirectToAction("index", "Gebruiker");
+                    return RedirectToAction("index", "Home");
                 }
                 else { return Content(feedback.Message); }
                 

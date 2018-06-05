@@ -10,23 +10,31 @@
             <div class="dasboard-container">
                 <h2>ACCOUNT</h2>
                 <div class="dashboardcontent-container">
-                    <div class="glyphicon glyphicon-user account-image">
-                        <div class="usericon-background"></div>
-                    </div>
-                    <p>Mautjee</p>
-                </div>
+
+                    <p>Welkom </p>
+                    <p>@Model.gebruiker.Voornaam @Model.gebruiker.Achternaam</p>
+                    
+                    <p>Uw Huidige gegevens</p>
+                    <a asp-action="ChangeStudentenhuis"  class="btn btn-default">Verander van Studentenhuis</a></div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="dasboard-container">
                 <h2>Overzicht huis (@Model.studentenhuis.Naam)</h2>
                 <div class="dashboardcontent-container">
+                    @if (Model.studentenhuis.Naam == "GeenHuis")
+                    {
 
-                        @foreach ( Bewonersaldo b in Model.Bewonersaldos)
+                        <a asp-action="Index" asp-controller="Studentenhuis">Word lid van een Studentenhuis</a>
+                    }
+                    else
+                    {
+                        @foreach (Bewonersaldo b in Model.Bewonersaldos)
                         {
-                            <h3 id="viewdetailpartial" >@b.Voornaam / Saldo = @b.Saldo </h3> 
+                            <h3 id="viewdetailpartial">@b.Voornaam / Saldo = @b.Saldo </h3>
                         }
-                  
+                    }
+
                 </div>
             </div>
         </div>
