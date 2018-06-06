@@ -11,11 +11,11 @@
                 <h2>ACCOUNT</h2>
                 <div class="dashboardcontent-container">
 
-                    <p>Welkom </p>
-                    <p>@Model.gebruiker.Voornaam @Model.gebruiker.Achternaam</p>
+                    <h3>Welkom </h3>
+                    <h3>@Model.gebruiker.Voornaam @Model.gebruiker.Achternaam</h3>
                     
-                    <p>Uw Huidige gegevens</p>
-                    <a asp-action="ChangeStudentenhuis"  class="btn btn-default">Verander van Studentenhuis</a></div>
+                    
+                    <a asp-action="Index" asp-controller="Studentenhuis"  class="btn btn-default">Verander van Studentenhuis</a></div>
             </div>
         </div>
         <div class="col-sm-6">
@@ -42,15 +42,15 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="dasboard-container">
-                <h2>Activiteit</h2>
+                <h2>Bataald voor een huisgenoot</h2>
                 <div class="dashboardcontent-container">
                     <form asp-controller="Home" asp-action="VoegActiviteitToe" method="post">
 
-                        <input value="@Model.gebruiker.GebruikerID" type="hidden" id="IngelogdeGebruiker" name="IngelogdeGebruiker" />
+
                         <input value="@Model.studentenhuis.StudentenhuisID" type="hidden" id="studentenhuisid" name="studentenhuisid" />
 
                         <div class="form-group">
-                            <label class="control-label col-sm-10" for="DatumVanActiviteit">Waneer heeft de activiteit plaatsgevonden</label>
+                            <label class="control-label col-sm-10" for="DatumVanActiviteit">Waneer heeft de aankoop plaatsgevonden</label>
                             <div class="col-sm-10 input-small">
                                 <input class="form-control col-sm-6" asp-for="@Model.aciviteit.Datum" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
                             </div>
@@ -65,17 +65,29 @@
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-10" for="Bedrag">Bedrag van de activiteit</label>
+                            <label class="control-label col-sm-10" for="Bedrag">Bedrag van de aankoop</label>
                             <div class="col-sm-10 input-small">
-                                <input class="form-control col-sm-3" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
+                                <input class="form-control col-sm-1" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-10" for="TegenGebruiker">Voor wie heb je iets gekocht</label>
+                            <label class="control-label col-sm-10" for="TegenGebruiker">Wie heeft er wat betaald</label>
                             <div class="col-sm-10 input-small">
-                                <select name="TegenGebruiker" id="TegenGebruiker">
+                                <select name="betaalGebruiker" class="selectpicker show-tick" multiple title="Kies een Huisgenoot">
+                                    @foreach (Bewonersaldo b in Model.Bewonersaldos)
+                                    {
+                                        <option value="@b.GebruikerID">@b.Voornaam </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-10" for="TegenGebruiker">Voor wie is er wat betaald</label>
+                            <div class="col-sm-10 input-small">
+                                <select name="TegenGebruiker" class="selectpicker show-tick"  multiple title="Kies een Huisgenoot">
                                     @foreach (Bewonersaldo b in Model.Bewonersaldos)
                                     {
                                         <option value="@b.GebruikerID">@b.Voornaam </option>
@@ -93,13 +105,96 @@
                     </form>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-sm-6">
+            <div class="dasboard-container">
+                <h2>Ik heb gekookt voor</h2>
+                <div class="dashboardcontent-container">
+                    <form asp-controller="Home" asp-action="KokenStudentenhuis" method="post">
+
+                        <input value="@Model.studentenhuis.StudentenhuisID" type="hidden" id="studentenhuisid" name="studentenhuisid" />
+                        <input value="@Model.gebruiker.GebruikerID" type="hidden" id="ingelogdegebruiker" name="ingelogdegebruiker" />
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-10" for="DatumVanActiviteit">Waneer heb je gekookt</label>
+                            <div class="col-sm-10 input-small">
+                                <input class="form-control col-sm-6" asp-for="@Model.aciviteit.Datum" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-10" for="Beschrijving">Wat heb je gekookt</label>
+                            <div class="col-sm-10 input-small">
+                                <input class="form-control col-sm-6" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-10" for="Bedrag">Bedrag van boodschappen</label>
+                            <div class="col-sm-10 input-small">
+                                <input class="form-control col-sm-1" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="MeeEters">Wie hebben er mee gegeten</label>
+                            <div class="col-sm-10 input-small">
+                                <select name="KokenVoor[]" class="selectpicker" multiple data-actions-box="true" title="Kies mee eters">
+                                    @foreach (Bewonersaldo b in Model.Bewonersaldos)
+                                    {
+                                        @if(b.GebruikerID != Model.gebruiker.GebruikerID)
+                                        {
+                                            <option value="@b.GebruikerID">@b.Voornaam </option>
+                                        }
+                                        
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-6">&nbsp;</label>
+                            <div class="col-sm-10">
+                                <input type="submit" value="Verstuur" class="submit" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-13">
             <div class="dasboard-container">
                 <h2>Overzicht Actions</h2>
                 <div class="dashboardcontent-container">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Van</th>
+                                <th>Voor</th>
+                                <th>Beschrijving</th>
+                                <th>Datum</th>
+                                <th>Bedrag</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Activiteit a in Model.OverzichtActiviteit)
+                            {
+                                <tr>
+                                    <td>@Model.GetNameVanGebruiker(a.IngelogdeGebruiker)</td>
+                                    <td>@Model.GetNameVanGebruiker(a.TegenGebruiker)</td>
+                                    <td>@a.Beschrijving</td>
+                                    <td>@a.Datum.ToShortDateString()</td>
+                                    <td>@a.Bedrag</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
 
-                   
 
                 </div>
             </div>

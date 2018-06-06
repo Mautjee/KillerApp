@@ -15,5 +15,6 @@ namespace KillerApp.Logic
         StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebruikerid);
         List<Bewonersaldo> AlleactieveBewonersaldos(int studentenhuisId);
         QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis);
+        List<Activiteit> GetListAtiviteitStudentenhuis(int studentnehuisID);
     }
 }

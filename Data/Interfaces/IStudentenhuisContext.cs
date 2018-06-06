@@ -15,6 +15,7 @@ namespace KillerApp.Data.Interfaces
         bool verwijderBewoner(Gebruiker gebruiker);
         StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebrukerid);
         QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis);
+        List<Activiteit> GetListAtiviteitStudentenhuis(int studentnehuisID);
 
     }
 }

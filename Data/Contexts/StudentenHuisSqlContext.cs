@@ -277,5 +277,56 @@ namespace KillerApp.Data.Contexts
                 return feedback;
             };
         }
+
+        public List<Activiteit> GetListAtiviteitStudentenhuis(int studentnehuisID)
+        {
+            List<Activiteit> activiteiten = new List<Activiteit>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string query = @"SELECT GebruikerId, TegenGebruikerID,Datum,Beschrijving,Bedrag 
+                            From Table_Activiteit 
+                            Where StudentenhuisID = @studentenhuisID";
+
+                        cmd.CommandText = query;
+
+                        cmd.Parameters.AddWithValue("@studentenhuisID", studentnehuisID);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+                                while (sdr.Read())
+                                {
+                                    activiteiten.Add(new Activiteit
+                                    {
+                                        Datum = (DateTime)sdr["Datum"],
+                                        Beschrijving = (string)sdr["Beschrijving"],
+                                        Bedrag = (int)sdr["Bedrag"],
+                                        TegenGebruiker = (int)sdr["TegenGebruikerID"],
+                                        IngelogdeGebruiker = (int)sdr["GebruikerID"]
+                                    });
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception EX)
+            {
+                Console.Write(EX.Message);
+            }
+            return activiteiten;
+        }
     }
 }

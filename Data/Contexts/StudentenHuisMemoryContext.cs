@@ -62,5 +62,10 @@ namespace KillerApp.Data.Contexts
         {
             throw new NotImplementedException();
         }
+
+        public List<Activiteit> GetListAtiviteitStudentenhuis(int studentnehuisID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

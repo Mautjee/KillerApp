@@ -11,6 +11,11 @@ namespace KillerApp.Model
         public int IngelogdeGebruiker { get; set; }
         public int StudentenhuisID { get; set; }
 
+        public Activiteit()
+        {
+
+        }
+
         public Activiteit(DateTime date,string beschrijving, int bedrag, int tegengerbuikerID,
             int ingelogdegebruiker, int studentenhuisid)
         {

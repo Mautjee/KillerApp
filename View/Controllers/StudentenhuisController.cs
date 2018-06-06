@@ -21,9 +21,11 @@ namespace KillerApp.View.Controllers
         public IActionResult Index()
         {
             StudentenHuisViewModel studhuisviewmodel = new StudentenHuisViewModel();
+            Gebruiker gebr = GetgebruikerfromSession();
 
             studhuisviewmodel.allestudentenhuizen = studentenhuislogic.GetallStudentenhuizen();
-            studhuisviewmodel.Ingelogdegebruiker = GetgebruikerfromSession();
+            studhuisviewmodel.Ingelogdegebruiker = gebr;
+            studhuisviewmodel.huidighuis = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
 
             return View(studhuisviewmodel);
         }
@@ -37,6 +39,13 @@ namespace KillerApp.View.Controllers
             detailviewmodel.SelectedStudentenhuisID = id;
 
             return PartialView(detailviewmodel);
+        }
+
+        public IActionResult ChangeStudentenhuis()
+        {
+
+
+            return Content("Je bent geen lid meer");
         }
 
         public IActionResult NiewStudentenhuis()

@@ -12,14 +12,26 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h2>All Studentenhuizen</h2>
-        <ul id="platformLinks">
-            @foreach (StudentenHuis studhuis in Model.allestudentenhuizen)
-            {
-            <li><a asp-action="StudentenhuisPartial" id="viewStudHuisDetailpartial" onclick="ShowGebruikersHuis(event)" asp-route-id="@studhuis.StudentenhuisID">@studhuis.Naam</a></li>
-            }
-        </ul>
-        <a asp-action="NiewStudentenhuis" onclick="ShowGebruikersHuis(event)" class="btn btn-default">Voeg een studentenhuis toe</a>
+        @if (!Model.checkLidVanStudentenhuis())
+        {
+            <h2>All Studentenhuizen</h2>
+            <ul id="platformLinks">
+                @foreach (StudentenHuis studhuis in Model.allestudentenhuizen)
+                {
+                    <li><a asp-action="StudentenhuisPartial" id="viewStudHuisDetailpartial" onclick="ShowGebruikersHuis(event)" asp-route-id="@studhuis.StudentenhuisID">@studhuis.Naam</a></li>
+                }
+            </ul>
+            <a asp-action="NiewStudentenhuis" onclick="ShowGebruikersHuis(event)" class="btn btn-default">Voeg een studentenhuis toe</a>
+        }
+        else
+        {
+            <h3>Je bent nu actief lid van dit huis</h3>
+            <H1><i>@Model.huidighuis.Naam</i></H1>
+
+            <p>Weet je zeker dat je niet meer actief lid wilt zijn van dit huis druk dan op de onderstaande knop</p>
+            <a asp-action="ChangeStudentenhuis" class="btn btn-default">Word niet meer actif van dit Studentenhuis</a>
+        
+        }
     </div>
     <div class="col-md-6" id="HuisDetail">
     </div>

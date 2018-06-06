@@ -26,6 +26,9 @@ namespace View.Controllers
         StudentenhuisLogic studentenhuislogic = StudentenhuisFactory.UseSqlContext();
 
         const string UserSession = "GerbuikerData";
+
+        //Public Iaction Result
+
         public IActionResult Index(Gebruiker gebr)
         {
             return View(new Gebruiker());       
@@ -44,10 +47,12 @@ namespace View.Controllers
 
             viewmodel.gebruiker = gebr;
             viewmodel.studentenhuis = studhuis;
+            
 
             if (studhuis.Naam != "GeenHuis")
             {
                 viewmodel.Bewonersaldos = studentenhuislogic.AlleactieveBewonersaldos(studhuis.StudentenhuisID);
+                viewmodel.OverzichtActiviteit = studentenhuislogic.GetListAtiviteitStudentenhuis(studhuis.StudentenhuisID);
             }
             else
             {
@@ -61,6 +66,57 @@ namespace View.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+       
+        public IActionResult LogOut()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait();
+            return RedirectToAction("Index", "Home");
+        }
+
+        
+
+        //Post Methods
+
+
+        [HttpPost]
+        public IActionResult VoegActiviteitToe(DateTime DatumVanActiviteit,string Beschrijving,
+                                                string Bedrag, int TegenGebruiker, int betaalGebruiker,int studentenhuisid)
+        {
+            
+
+            Activiteit activi = new Activiteit(DatumVanActiviteit,Beschrijving,Convert.ToInt32(Bedrag),TegenGebruiker,betaalGebruiker, studentenhuisid);
+            QueryFeedback feedback = gebruikLogic.VoegActifiteitToe(activi);
+            if (feedback.Gelukt)
+            {
+                return RedirectToAction("Dashboard","Home");
+            }
+            else
+            {
+                return Content($"hetis niet gelukt omdat {feedback.Message}");
+            }
+            
+        }
+
+        [HttpPost]
+        public IActionResult KokenStudentenhuis(int[] KokenVoor, DateTime DatumVanActiviteit, string Beschrijving,
+                                                string bedrag, int studentenhuisid,int ingelogdegebruiker)
+        {
+            Activiteit activi = new Activiteit
+            {
+                Datum = DatumVanActiviteit,
+                Beschrijving = Beschrijving,
+                Bedrag = Convert.ToInt32(bedrag),
+                StudentenhuisID = studentenhuisid,
+                IngelogdeGebruiker = ingelogdegebruiker
+            };
+
+            QueryFeedback feedback = gebruikLogic.KokenVoorHuisgenoten(KokenVoor,activi,ingelogdegebruiker);
+            if (!feedback.Gelukt)
+            {
+                RedirectToAction("Error", "Home");
+            }
+            return RedirectToAction("Dashboard","Home");
         }
 
         [HttpPost]
@@ -84,6 +140,8 @@ namespace View.Controllers
 
             return Content("Inlog Mislukt omdat");
         }
+        
+        // Private methods
 
         private void PerformLogin(Gebruiker gebruiker)
         {
@@ -101,31 +159,6 @@ namespace View.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity)).Wait();
         }
-        public IActionResult LogOut()
-        {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait();
-            return RedirectToAction("Index", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult VoegActiviteitToe(DateTime DatumVanActiviteit,string Beschrijving,
-                                                string Bedrag, int TegenGebruiker, int IngelogdeGebruiker,int studentenhuisid)
-        {
-            
-
-            Activiteit activi = new Activiteit(DatumVanActiviteit,Beschrijving,Convert.ToInt32(Bedrag),TegenGebruiker,IngelogdeGebruiker, studentenhuisid);
-            QueryFeedback feedback = gebruikLogic.VoegActifiteitToe(activi);
-            if (feedback.Gelukt)
-            {
-                return RedirectToAction("Dashboard","Home");
-            }
-            else
-            {
-                return Content($"hetis niet gelukt omdat {feedback.Message}");
-            }
-            
-        }
-
         private Gebruiker GetgebruikerfromSession()
         {
             var accObject = HttpContext.Session.GetString(UserSession);

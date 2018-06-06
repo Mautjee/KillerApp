@@ -35,6 +35,38 @@ namespace Logic
             return _gebruikerRepo.GetbyID(id);
         }
 
+        public QueryFeedback KokenVoorHuisgenoten(int[] mensen, Activiteit activi, int Kok)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+            int aantalMensen = mensen.Length + 1;
+            int bedragPerPersoon = activi.Bedrag / aantalMensen ;
+            int aantalMeeEters = mensen.Length - 1;
+            
+            
+            for(int i = 0; i <= aantalMeeEters; i++)
+            {
+                Activiteit bedragVoorMeeEters = new Activiteit
+                {
+                    Bedrag = bedragPerPersoon,
+                    Beschrijving = activi.Beschrijving,
+                    Datum = activi.Datum,
+                    IngelogdeGebruiker = Kok,
+                    StudentenhuisID = activi.StudentenhuisID,
+                    TegenGebruiker = mensen[i],
+                    
+                };
+
+                feedback = VoegActifiteitToe(bedragVoorMeeEters);
+                if (!feedback.Gelukt)
+                {
+                    return feedback;
+                }
+            }
+            
+
+            return feedback;
+        }
+
         public QueryFeedback updateGebruiker(Gebruiker gebruiker)
         {
             return _gebruikerRepo.updateGebruiker(gebruiker);

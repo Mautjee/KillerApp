@@ -14,5 +14,6 @@ namespace Logic
         QueryFeedback updateGebruiker(Gebruiker gebruiker);
         Gebruiker CheckLogin(Gebruiker gebruiker);
         QueryFeedback VoegActifiteitToe(Activiteit activiteit);
+        QueryFeedback KokenVoorHuisgenoten(int[] mensen, Activiteit activi, int kok);
     }
 }
