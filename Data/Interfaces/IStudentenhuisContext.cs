@@ -16,6 +16,7 @@ namespace KillerApp.Data.Interfaces
         StudentenHuis GetActiveStudentenhuisBijGebruiker(int gebrukerid);
         QueryFeedback MakeNewStudentenhuis(string naamniewestudentenhuis);
         List<Activiteit> GetListAtiviteitStudentenhuis(int studentnehuisID);
+        Vraag GetVraagBijStudentenhuis(int studentenID);
 
     }
 }

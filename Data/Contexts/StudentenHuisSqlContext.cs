@@ -328,5 +328,10 @@ namespace KillerApp.Data.Contexts
             }
             return activiteiten;
         }
+
+        public Vraag GetVraagBijStudentenhuis(int studentenID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

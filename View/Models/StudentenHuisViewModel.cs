@@ -16,6 +16,7 @@ namespace KillerApp.View.Models
         public Gebruiker Ingelogdegebruiker { get; set; }
         public List<StudentenHuis> allestudentenhuizen { get; set; }
         public StudentenHuis huidighuis { get; set; }
+        
 
         public bool checkLidVanStudentenhuis()
         {

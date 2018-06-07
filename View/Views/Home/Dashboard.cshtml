@@ -182,16 +182,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Activiteit a in Model.OverzichtActiviteit)
+                            @if (Model.OverzichtActiviteit == null)
                             {
+
                                 <tr>
-                                    <td>@Model.GetNameVanGebruiker(a.IngelogdeGebruiker)</td>
-                                    <td>@Model.GetNameVanGebruiker(a.TegenGebruiker)</td>
-                                    <td>@a.Beschrijving</td>
-                                    <td>@a.Datum.ToShortDateString()</td>
-                                    <td>@a.Bedrag</td>
+                                    <td>Geen Activiteit</td>
+                                    <td>Geen Activiteit</td>
+                                    <td>Geen Activiteiten gevonden</td>
+                                    <td>Geen Activiteit</td>
+                                    <td>Geen Activiteit</td>
                                 </tr>
                             }
+                            else
+                            {
+
+                                @foreach (Activiteit a in Model.OverzichtActiviteit)
+                                {
+                                    <tr>
+                                        <td>@Model.GetNameVanGebruiker(a.IngelogdeGebruiker)</td>
+                                        <td>@Model.GetNameVanGebruiker(a.TegenGebruiker)</td>
+                                        <td>@a.Beschrijving</td>
+                                        <td>@a.Datum.ToShortDateString()</td>
+                                        <td>@a.Bedrag</td>
+                                    </tr>
+                                }
+                            }
+
                         </tbody>
                     </table>
 

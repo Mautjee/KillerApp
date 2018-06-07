@@ -67,5 +67,16 @@ namespace KillerApp.Data.Contexts
         {
             throw new NotImplementedException();
         }
+
+        public Vraag GetVraagBijStudentenhuis(int studentenID)
+        {
+            Vraag devraag = new Vraag
+            {
+                DeVraag = "wat is de hoofdstad van nederland",
+                Antwoord = "Amsterdam"
+            };
+
+            return devraag;
+        }
     }
 }

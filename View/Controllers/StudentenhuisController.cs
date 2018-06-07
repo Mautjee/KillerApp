@@ -15,6 +15,8 @@ namespace KillerApp.View.Controllers
     public class StudentenhuisController : Controller
     {
         StudentenhuisLogic studentenhuislogic = StudentenhuisFactory.UseSqlContext();
+        StudentenhuisLogic studentenhuistest = StudentenhuisFactory.UseSqlContext();
+
         const string UserSession = "GerbuikerData";
 
         // Controller Methods
@@ -37,6 +39,7 @@ namespace KillerApp.View.Controllers
             detailviewmodel.IngelogdeGebruiker = GetgebruikerfromSession();
             detailviewmodel.VoornamenBewoners = studentenhuislogic.AlleactieveBewonersaldos(id);
             detailviewmodel.SelectedStudentenhuisID = id;
+            //detailviewmodel.DeToegangsvraag = studentenhuistest.GetVraagBijStudentenhuis()
 
             return PartialView(detailviewmodel);
         }

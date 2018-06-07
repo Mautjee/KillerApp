@@ -54,5 +54,10 @@ namespace KillerApp.Data.Repositories
         {
             return _studenthuisContext.GetListAtiviteitStudentenhuis(studentnehuisID);
         }
+
+        public Vraag GetVraagBijStudentenhuis(int studentenID)
+        {
+            return _studenthuisContext.GetVraagBijStudentenhuis(studentenID);
+        }
     }
 }

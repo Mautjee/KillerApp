@@ -66,5 +66,10 @@ namespace KillerApp.Logic
         {
             return _studentenhuisRepository.GetListAtiviteitStudentenhuis(studentnehuisID);
         }
+
+        public Vraag GetVraagBijStudentenhuis(int studentenID)
+        {
+            return _studentenhuisRepository.GetVraagBijStudentenhuis(studentenID);
+        }
     }
 }

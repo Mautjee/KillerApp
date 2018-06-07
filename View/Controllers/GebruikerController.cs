@@ -48,7 +48,7 @@ namespace KillerApp.View.Controllers
 
                 Gebruiker NiewGebruiker = new Gebruiker(UserName,DeVoornaam,DeAchternaam,Email);
 
-
+                NiewGebruiker.SetWachtwoord(Wachtwoord);
 
                 QueryFeedback feedback = gebruikLogic.AddGebruiker(NiewGebruiker);
                 if (feedback.Gelukt)
