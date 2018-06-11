@@ -78,5 +78,20 @@ namespace KillerApp.Data.Contexts
 
             return devraag;
         }
+
+        public QueryFeedback AddVraagBijStudentenhuis(int studentenhuisID, Vraag devraag)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StudentenHuis GetStudentenhuisIdByStudentenhuisName(string StudentenhuisName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public QueryFeedback CheckAntwoordOpDeVraag(int studenenthuisID, string hetAntwoord)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

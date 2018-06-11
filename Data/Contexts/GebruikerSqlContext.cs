@@ -181,7 +181,7 @@ namespace Data.Contexts
                         cmd.Parameters.AddWithValue("@voornaam", g.Voornaam);
                         cmd.Parameters.AddWithValue("@achternaam", g.Achternaam);
 
-
+                        cmd.Parameters.AddWithValue("gebruikerid", g.GebruikerID);
                         cmd.Parameters.AddWithValue("@mailadress", g.Email);
 
 

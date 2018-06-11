@@ -33,7 +33,7 @@ namespace View.Controllers
         {
             return View(new Gebruiker());       
         }
-
+        
         public IActionResult Dashboard()
         {
             if (!HttpContext.Session.Keys.Contains(UserSession))
@@ -78,45 +78,43 @@ namespace View.Controllers
 
         //Post Methods
 
-
         [HttpPost]
-        public IActionResult VoegActiviteitToe(DateTime DatumVanActiviteit,string Beschrijving,
-                                                string Bedrag, int TegenGebruiker, int betaalGebruiker,int studentenhuisid)
+        public IActionResult KokenStudentenhuis(int[] VoorGebr, DateTime DatumVanActiviteit,int VanGebruiker , string Beschrijving,
+                                                string bedrag, int studentenhuisid, string KokenOfVoorschieten)
         {
-            
 
-            Activiteit activi = new Activiteit(DatumVanActiviteit,Beschrijving,Convert.ToInt32(Bedrag),TegenGebruiker,betaalGebruiker, studentenhuisid);
-            QueryFeedback feedback = gebruikLogic.VoegActifiteitToe(activi);
-            if (feedback.Gelukt)
-            {
-                return RedirectToAction("Dashboard","Home");
-            }
-            else
-            {
-                return Content($"hetis niet gelukt omdat {feedback.Message}");
-            }
-            
-        }
-
-        [HttpPost]
-        public IActionResult KokenStudentenhuis(int[] KokenVoor, DateTime DatumVanActiviteit, string Beschrijving,
-                                                string bedrag, int studentenhuisid,int ingelogdegebruiker)
-        {
             Activiteit activi = new Activiteit
             {
                 Datum = DatumVanActiviteit,
                 Beschrijving = Beschrijving,
                 Bedrag = Convert.ToInt32(bedrag),
                 StudentenhuisID = studentenhuisid,
-                IngelogdeGebruiker = ingelogdegebruiker
+                IngelogdeGebruiker = VanGebruiker
             };
 
-            QueryFeedback feedback = gebruikLogic.KokenVoorHuisgenoten(KokenVoor,activi,ingelogdegebruiker);
-            if (!feedback.Gelukt)
+            if (KokenOfVoorschieten == "koken")
             {
-                RedirectToAction("Error", "Home");
+                QueryFeedback feedback = gebruikLogic.KokenVoorHuisgenoten(VoorGebr, activi);
+                if (!feedback.Gelukt)
+                {
+                    RedirectToAction("Error", "Home");
+                }
+                return RedirectToAction("Dashboard", "Home");
             }
-            return RedirectToAction("Dashboard","Home");
+            else if (KokenOfVoorschieten == "voorgeschoten")
+            {
+
+                QueryFeedback VoegActiviteitToe = gebruikLogic.VoorschitenVoorHuisgenoten(VoorGebr,activi);
+                if (VoegActiviteitToe.Gelukt)
+                {
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                 return Content($"hetis niet gelukt omdat {VoegActiviteitToe.Message}");
+                
+            }
+            else {
+                return Content("Selecteet of je kookt of iets voorschiet");
+            }
         }
 
         [HttpPost]

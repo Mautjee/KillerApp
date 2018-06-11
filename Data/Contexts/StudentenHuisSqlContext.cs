@@ -72,10 +72,11 @@ namespace KillerApp.Data.Contexts
 
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        string query = $"Select * FROM Table_Gebruiker Where StudentenhuisID = {studenthuisId}";
+                        string query = $"Select * FROM Table_Gebruiker Where StudentenhuisID = @studentenhuisID";
 
                         cmd.CommandText = query;
 
+                        cmd.Parameters.AddWithValue("@studentenhuisID", studenthuisId);
 
                         cmd.Connection = conn;
 
@@ -278,7 +279,7 @@ namespace KillerApp.Data.Contexts
             };
         }
 
-        public List<Activiteit> GetListAtiviteitStudentenhuis(int studentnehuisID)
+        public List<Activiteit> GetListAtiviteitStudentenhuis(int studentenhuisID)
         {
             List<Activiteit> activiteiten = new List<Activiteit>();
 
@@ -291,11 +292,12 @@ namespace KillerApp.Data.Contexts
                     {
                         string query = @"SELECT GebruikerId, TegenGebruikerID,Datum,Beschrijving,Bedrag 
                             From Table_Activiteit 
-                            Where StudentenhuisID = @studentenhuisID";
+                            Where StudentenhuisID = @studentenhuisID
+                            Order by ActiviteitID desc";
 
                         cmd.CommandText = query;
 
-                        cmd.Parameters.AddWithValue("@studentenhuisID", studentnehuisID);
+                        cmd.Parameters.AddWithValue("@studentenhuisID", studentenhuisID);
 
                         cmd.Connection = conn;
 
@@ -329,9 +331,176 @@ namespace KillerApp.Data.Contexts
             return activiteiten;
         }
 
-        public Vraag GetVraagBijStudentenhuis(int studentenID)
+        public Vraag GetVraagBijStudentenhuis(int studentenhuisID)
         {
-            throw new NotImplementedException();
+            Vraag devraag = new Vraag();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string query = @"SELECT DeVraag,HetAntwoord FROM Table_Vraag Where StudentenhuisID = @studentenhuisID";
+
+                        cmd.CommandText = query;
+
+                        cmd.Parameters.AddWithValue("@studentenhuisID", studentenhuisID);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+                                while (sdr.Read())
+                                {
+                                    devraag = new Vraag
+                                    {
+                                        Antwoord = (string)sdr["HetAntwoord"],
+                                        DeVraag = (string)sdr["DeVraag"]
+                                    };
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception EX)
+            {
+                Console.Write(EX.Message);
+            }
+            return devraag;
+        }
+
+        public QueryFeedback AddVraagBijStudentenhuis(int studentenhuisID,Vraag devraag)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+                        string qry = $"INSERT INTO Table_Vraag Values(@niewenaamhuis,@devraag,@hetantwoord)";
+
+                        cmd.CommandText = qry;
+
+                        cmd.Parameters.AddWithValue("@niewenaamhuis", studentenhuisID);
+                        cmd.Parameters.AddWithValue("@devraag", devraag.DeVraag);
+                        cmd.Parameters.AddWithValue("@hetantwoord", devraag.Antwoord);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        feedback.Gelukt = true;
+                        return feedback;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                feedback.Gelukt = false;
+                feedback.Message = ex.Message;
+                return feedback;
+            };
+        }
+
+        public StudentenHuis GetStudentenhuisIdByStudentenhuisName(string StudentenhuisName)
+        {
+            StudentenHuis huis = new StudentenHuis();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string query = $"Select * FROM Table_Gebruiker Where NaamHuis = @naamhuis";
+
+                        cmd.CommandText = query;
+
+                        cmd.Parameters.AddWithValue("@naamhuis", StudentenhuisName);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+                                huis.StudentenhuisID = (int)sdr["StudentnehuisID"];
+                                huis.Naam = (string)sdr["NaamHuis"];
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                Console.WriteLine(ex.Message);
+            }
+
+            return huis;
+
+        }
+
+        public QueryFeedback CheckAntwoordOpDeVraag(int studenenthuisID, string hetAntwoord)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+                        string qry = $"Select * from Table_Vraag where StudentenhuisID = @studentenhuisID AND HetAntwoord = @hetantwoord";
+
+                        cmd.CommandText = qry;
+
+                        cmd.Parameters.AddWithValue("@studentenhuisID", studenenthuisID);
+                        cmd.Parameters.AddWithValue("@hetantwoord", hetAntwoord);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+                                feedback.Gelukt = true;
+                                feedback.Message = "Het antwoord is goed";
+                                return feedback;
+                            }
+                            feedback.Gelukt = false;
+                            feedback.Message = "Het antwoord is fout";
+                            return feedback;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                feedback.Gelukt = false;
+                feedback.Message = ex.Message;
+                return feedback;
+            };
         }
     }
 }

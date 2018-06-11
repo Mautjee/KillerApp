@@ -13,7 +13,7 @@ namespace Logic
         QueryFeedback AddGebruiker(Gebruiker gebruiker);
         QueryFeedback updateGebruiker(Gebruiker gebruiker);
         Gebruiker CheckLogin(Gebruiker gebruiker);
-        QueryFeedback VoegActifiteitToe(Activiteit activiteit);
-        QueryFeedback KokenVoorHuisgenoten(int[] mensen, Activiteit activi, int kok);
+        QueryFeedback VoorschitenVoorHuisgenoten(int[] mensen,Activiteit activiteit);
+        QueryFeedback KokenVoorHuisgenoten(int[] mensen, Activiteit activiteit);
     }
 }

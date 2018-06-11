@@ -71,5 +71,20 @@ namespace KillerApp.Logic
         {
             return _studentenhuisRepository.GetVraagBijStudentenhuis(studentenID);
         }
+
+        public QueryFeedback AddVraagBijStudentenhuis(int studentenhuisID, Vraag devraag)
+        {
+            return _studentenhuisRepository.AddVraagBijStudentenhuis(studentenhuisID, devraag);
+        }
+
+        public StudentenHuis GetStudentenhuisIdByStudentenhuisName(string StudentenhuisName)
+        {
+            return _studentenhuisRepository.GetStudentenhuisIdByStudentenhuisName(StudentenhuisName);
+        }
+
+        public QueryFeedback CheckAntwoordOpDeVraag(int studenenthuisID, string hetAntwoord)
+        {
+            return _studentenhuisRepository.CheckAntwoordOpDeVraag(studenenthuisID, hetAntwoord);
+        }
     }
 }

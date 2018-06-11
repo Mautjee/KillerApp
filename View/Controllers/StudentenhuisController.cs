@@ -9,6 +9,7 @@ using Model;
 using KillerApp.View.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using KillerApp.Model;
 
 namespace KillerApp.View.Controllers
 {
@@ -39,7 +40,8 @@ namespace KillerApp.View.Controllers
             detailviewmodel.IngelogdeGebruiker = GetgebruikerfromSession();
             detailviewmodel.VoornamenBewoners = studentenhuislogic.AlleactieveBewonersaldos(id);
             detailviewmodel.SelectedStudentenhuisID = id;
-            //detailviewmodel.DeToegangsvraag = studentenhuistest.GetVraagBijStudentenhuis()
+
+            detailviewmodel.DeToegangsvraag = studentenhuislogic.GetVraagBijStudentenhuis(id);
 
             return PartialView(detailviewmodel);
         }
@@ -59,23 +61,45 @@ namespace KillerApp.View.Controllers
         // POST methods
 
         [HttpPost]
-        public IActionResult VoegGebrAanStudhuisToe(int IngelogdeGebruiker, int studentenhuisid)
+        public IActionResult VoegGebrAanStudhuisToe(int IngelogdeGebruiker, int studentenhuisid, string antwoord)
         {
-            QueryFeedback feedback = studentenhuislogic.voegBewonertoe(IngelogdeGebruiker, studentenhuisid);
-            if (feedback.Gelukt)
+            QueryFeedback Checkantwoord = studentenhuislogic.CheckAntwoordOpDeVraag(studentenhuisid, antwoord);
+
+            if (Checkantwoord.Gelukt)
             {
-                return RedirectToAction("Dashboard", "Home");
+                QueryFeedback feedback = studentenhuislogic.voegBewonertoe(IngelogdeGebruiker, studentenhuisid);
+
+                if (feedback.Gelukt)
+                {
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else { return Content($"Het heeft niet gewerkt omdat: {feedback.Message}"); }
             }
-            return Content($"Het heeft niet gewerkt omdat: {feedback.Message}");
+            else { return Content(Checkantwoord.Message); }
+            
         }
 
         [HttpPost]
-        public IActionResult MakeNewStudentenhuis(string naamstudentenhuis)
+        public IActionResult MakeNewStudentenhuis(string naamstudentenhuis, string devraag,string hetantwoord)
         {
             QueryFeedback feedback = studentenhuislogic.MakeNewStudentenhuis(naamstudentenhuis);
+
+            Vraag niewevraagvoorhuis = new Vraag { DeVraag = devraag, Antwoord = hetantwoord };
+
             if (feedback.Gelukt)
             {
-                return RedirectToAction("index", "Studentenhuis");
+
+                StudentenHuis niewaangemaaktstudentenhuis = studentenhuislogic.GetStudentenhuisIdByStudentenhuisName(naamstudentenhuis);
+
+                QueryFeedback feedback2 = studentenhuislogic.AddVraagBijStudentenhuis(niewaangemaaktstudentenhuis.StudentenhuisID, niewevraagvoorhuis);
+                if (feedback2.Gelukt)
+                {
+                    return RedirectToAction("index", "Studentenhuis");
+                }
+                else {
+                    return Content($"het toevoegen van de vraag is niet gelukt omdat {feedback2.Message}");
+                }
+                
             }
             else
             {

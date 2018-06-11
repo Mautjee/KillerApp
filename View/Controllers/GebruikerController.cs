@@ -33,11 +33,6 @@ namespace KillerApp.View.Controllers
             return View();
         }
 
-        public IActionResult Save()
-        {
-            return Content("Gelukt!");
-        }
-
         [HttpPost]
         public ActionResult Post(string UserName, string Wachtwoord,string DeVoornaam,string DeAchternaam,
             string Email)
@@ -73,7 +68,7 @@ namespace KillerApp.View.Controllers
             QueryFeedback feedback = gebruikLogic.updateGebruiker(gebr);
             if (feedback.Gelukt)
             {
-                return RedirectToAction("index", "Gebruiker");
+                return RedirectToAction("LogOut", "Home");
             }
             else { return Content(feedback.Message); }
         }

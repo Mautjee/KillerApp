@@ -11,11 +11,23 @@
         <li><h4>@b.Voornaam</h4></li>
     }
 </ul>
+
+
 <form asp-controller="Studentenhuis" asp-action="VoegGebrAanStudhuisToe" method="post">
 
     <input value="@Model.IngelogdeGebruiker.GebruikerID" type="hidden" id="IngelogdeGebruiker" name="IngelogdeGebruiker" />
     <input value="@Model.SelectedStudentenhuisID" type="hidden" id="studentenhuisid" name="studentenhuisid" />
 
+    <div class="form-group">
+        <label class="control-label col-sm-10" for="devraag">@Model.DeToegangsvraag.DeVraag</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-10" for="antwoord">Vul hier uw antwoord in</label>
+        <div class="col-sm-10 input-small">
+            <input class="form-control col-sm-6" type="text" id="antwoord" name="antwoord" />
+        </div>
+    </div>
     <div class="col-sm-10">
         <input type="submit" value="Voeg mij toe aan dit Studentenhuis" class="btn btn-default" />
     </div>
