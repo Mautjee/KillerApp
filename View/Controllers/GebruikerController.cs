@@ -64,7 +64,7 @@ namespace KillerApp.View.Controllers
         [HttpPost]
         public IActionResult UpdateGebruiker(Gebruiker gebr)
         {
-
+         
             QueryFeedback feedback = gebruikLogic.updateGebruiker(gebr);
             if (feedback.Gelukt)
             {

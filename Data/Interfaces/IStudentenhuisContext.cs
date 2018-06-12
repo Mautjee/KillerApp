@@ -20,6 +20,8 @@ namespace KillerApp.Data.Interfaces
         QueryFeedback AddVraagBijStudentenhuis(int studentenhuisID, Vraag devraag);
         StudentenHuis GetStudentenhuisIdByStudentenhuisName(string StudentenhuisName);
         QueryFeedback CheckAntwoordOpDeVraag(int studenenthuisID, string hetAntwoord);
+        Bewonersaldo CheckSaldo(int studentenhuisID,int ingelogdeGebrID);
+        QueryFeedback UnsubscrbeStudentenhuis(int studentenhuisID, int gebruikerID);
 
     }
 }

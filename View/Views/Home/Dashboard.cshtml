@@ -18,10 +18,12 @@
                     <h3>Welkom </h3>
                     <h3>@Model.gebruiker.Voornaam @Model.gebruiker.Achternaam</h3>
 
-
-                    <a asp-action="Index" asp-controller="Studentenhuis" class="btn btn-default">Verander van Studentenhuis</a>
-                    <a asp-action="ViewDetailPartial" asp-controller="Gebruiker" asp-route-id="@Model.gebruiker.GebruikerID" onclick="ShowReserveringsForm(event)" class="btn btn-default">Verander mijn details</a>
-                 </div>    
+                    @if (Model.studentenhuis.Naam != "GeenHuis")
+                    {
+                        <a asp-action="Index" asp-controller="Studentenhuis" class="btn btn-default">Verander van Studentenhuis</a>
+                    }
+                        <a asp-action="ViewDetailPartial" asp-controller="Gebruiker" asp-route-id="@Model.gebruiker.GebruikerID" onclick="ShowReserveringsForm(event)" class="btn btn-default">Verander mijn details</a>
+                    </div>    
             </div>
         </div>
         <div class="col-sm-6">
@@ -31,7 +33,7 @@
                     @if (Model.studentenhuis.Naam == "GeenHuis")
                     {
 
-                        <a asp-action="Index" asp-controller="Studentenhuis">Word lid van een Studentenhuis</a>
+                        <a asp-action="Index" class="btn btn-default" asp-controller="Studentenhuis">Word lid van een Studentenhuis</a>
                     }
                     else
                     {
@@ -55,75 +57,94 @@
                         <input value="@Model.studentenhuis.StudentenhuisID" type="hidden" id="studentenhuisid" name="studentenhuisid" />
                       
                         <div class="form-group">
-                            <label class="control-label col-sm-10" for="DatumVanActiviteit">Waneer heb je heeft het plaatgevonden</label>
-                            <div class="col-sm-offset-2 input-small">
-                                <input class="form-control col-sm-2" asp-for="@Model.aciviteit.Datum" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
+                            <div class="col-xs-7">
+                                <label class="control-label col-sm-5" for="DatumVanActiviteit">Waneer heb je heeft het plaatgevonden</label>
+                                <div class="col-sm-7 input-small">
+                                    <input class="form-control" asp-for="@Model.aciviteit.Datum" type="date" id="DatumVanActiviteit" name="DatumVanActiviteit" />
+                                </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-10" for="Beschrijving">Wat heb je gekocht</label>
-                            <div class="col-sm-offset-2 input-small">
-                                <input class="form-control col-sm-2" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label class="control-label col-sm-5" for="Beschrijving">Wat heb je gekocht</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" asp-for="@Model.aciviteit.Beschrijving" type="text" id="Beschrijving" name="Beschrijving" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-10" for="Bedrag">Bedrag van alles</label>
-                            <div class="col-sm-offset-2 input-small">
-                                <input class="form-control col-sm-2" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label class="control-label col-sm-5" for="Bedrag">Bedrag van alles</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" asp-for="@Model.aciviteit.Bedrag" type="text" id="Bedrag" name="Bedrag" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-10" for="VanGebruiker">Wie heeft er wat betaald</label>
-                            <div class="col-sm-offset-2 input-small">
-                                <select name="VanGebruiker" class="selectpicker show-tick">
-                                    @foreach (Bewonersaldo b in Model.Bewonersaldos)
-                                    {
-                                        @if (b.GebruikerID != Model.gebruiker.GebruikerID)
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label class="control-label col-sm-5" for="VanGebruiker">Wie heeft er wat betaald</label>
+                                    <div class="col-sm-7">
+                                        <select name="VanGebruiker" class="selectpicker show-tick">
+                                            @foreach (Bewonersaldo b in Model.Bewonersaldos)
+                                            {
+                                                @if (b.GebruikerID != Model.gebruiker.GebruikerID)
+                                                {
+                                                    <option value="@b.GebruikerID">@b.Voornaam </option>
+                                                }
+                                                else
+                                                {
+                                                    <option selected value="@b.GebruikerID">@b.Voornaam </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label class="control-label col-sm-5" for="VoorGebr">Wie Voor welke huisgenoten</label>
+                                    <div class="col-sm-offset-2 input-small">
+                                        <select name="VoorGebr[]" class="selectpicker" multiple data-actions-box="true" title="Kies voorwie ">
+                                            @foreach (Bewonersaldo b in Model.Bewonersaldos)
+                                            {
+                                                <option value="@b.GebruikerID">@b.Voornaam </option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label class="control-label col-sm-5" for="KokenOfVoorschieten">Wat heb je gedaan</label>
+                                    <div class="col-sm-offset-2 input-small">
+                                        <select name="KokenOfVoorschieten" class="selectpicker" title="Wat heb je gedaan ">
+                                            <option value="koken">Ik heb gekookt</option>
+                                            <option value="voorgeschoten">Ik heb iets voorgeschoten</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label class="control-label col-sm-5">&nbsp;</label>
+                                    <div class="col-sm-5">
+                                        @if (Model.studentenhuis.Naam != "GeenHuis")
                                         {
-                                            <option value="@b.GebruikerID">@b.Voornaam </option>
+                                            <input type="submit" value="Verstuur" class="btn btn-default" />
                                         }
                                         else
-                                        {
-                                            <option selected value="@b.GebruikerID">@b.Voornaam </option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-10" for="VoorGebr">Wie Voor welke huisgenoten</label>
-                            <div class="col-sm-offset-2 input-small">
-                                <select name="VoorGebr[]" class="selectpicker" multiple data-actions-box="true" title="Kies voorwie ">
-                                    @foreach (Bewonersaldo b in Model.Bewonersaldos)
-                                    {
-                                        <option value="@b.GebruikerID">@b.Voornaam </option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-10" for="KokenOfVoorschieten">Wat heb je gedaan</label>
-                            <div class="col-sm-offset-2 input-small">
-                                <select name="KokenOfVoorschieten" class="selectpicker" title="Wat heb je gedaan ">
-                                    <option value="koken">Ik heb gekookt</option>
-                                    <option value="voorgeschoten">Ik heb iets voorgeschoten</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-6">&nbsp;</label>
-                            <div class="col-sm-10">
-                                <input type="submit" value="Verstuur" class="submit" />
-                            </div>
-                        </div>
-                    </form>
+                                        { <input type="submit" disabled="true" value="Verstuur" class="submit" />}
+                                    </div>
+                                    </div>
+                                </div>
+                </form>
                 </div>
             </div>
         </div>

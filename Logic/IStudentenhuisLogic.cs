@@ -20,5 +20,6 @@ namespace KillerApp.Logic
         QueryFeedback AddVraagBijStudentenhuis(int studentenhuisID, Vraag devraag);
         StudentenHuis GetStudentenhuisIdByStudentenhuisName(string StudentenhuisName);
         QueryFeedback CheckAntwoordOpDeVraag(int studenenthuisID, string hetAntwoord);
+        QueryFeedback UnsubscibeStudentenhuis(int studentenhuisID, int ingelogdeGebrID);
     }
 }

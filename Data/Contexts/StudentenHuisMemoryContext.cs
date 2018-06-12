@@ -93,5 +93,14 @@ namespace KillerApp.Data.Contexts
         {
             throw new NotImplementedException();
         }
+
+        public Bewonersaldo CheckSaldo(int studentenhuisID, int ingelogdeGebrID)
+        {
+            throw new NotImplementedException();
+        }
+        public QueryFeedback UnsubscrbeStudentenhuis(int studentenhuisID, int gebruikerID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

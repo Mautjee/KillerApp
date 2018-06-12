@@ -502,5 +502,93 @@ namespace KillerApp.Data.Contexts
                 return feedback;
             };
         }
+
+        public Bewonersaldo CheckSaldo(int studentenhuisID, int ingelogdeGebrID)
+        {
+           
+            Bewonersaldo bewonerEnSaldo = new Bewonersaldo();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+                       
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.CommandText = "StudentenhuisbewonerEnSaldo";
+
+                        cmd.Parameters.AddWithValue("@gebrID", ingelogdeGebrID);
+                        cmd.Parameters.AddWithValue("@studID", studentenhuisID);
+                        
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            if (sdr.HasRows)
+                            {
+                                sdr.Read();
+                                bewonerEnSaldo.Saldo = (int)sdr["Saldo"];
+                                return bewonerEnSaldo;
+                            }
+                            return null;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            };
+        }
+        public QueryFeedback UnsubscrbeStudentenhuis(int studentenhuisID, int gebruikerID)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(sqlcon.connectionstring()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+
+
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.CommandText = "UnsubscribeStudentenhuis";
+
+                        cmd.Parameters.AddWithValue("@gebrID", gebruikerID);
+                        cmd.Parameters.AddWithValue("@studID", studentenhuisID);
+
+                        cmd.Connection = conn;
+
+                        conn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        
+                           
+                         feedback.Gelukt = true;
+                         return feedback;
+                            
+                    
+                        
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                feedback.Gelukt = false;
+                feedback.Message = ex.Message;
+                return feedback;
+            };
+        }
     }
 }

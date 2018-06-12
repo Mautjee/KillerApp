@@ -86,5 +86,42 @@ namespace KillerApp.Logic
         {
             return _studentenhuisRepository.CheckAntwoordOpDeVraag(studenenthuisID, hetAntwoord);
         }
+
+        public QueryFeedback UnsubscibeStudentenhuis(int studentenhuisID, int ingelogdeGebrID)
+        {
+            QueryFeedback feedback = new QueryFeedback();
+           Bewonersaldo bewonersaldo = _studentenhuisRepository.CheckSaldo(studentenhuisID, ingelogdeGebrID);
+
+            if(bewonersaldo != null)
+            {
+                if(bewonersaldo.Saldo >= 0)
+                {
+                   QueryFeedback unsubscibe = _studentenhuisRepository.UnsubscrbeStudentenhuis(studentenhuisID, ingelogdeGebrID);
+                    if (unsubscibe.Gelukt)
+                    {
+                        feedback.Gelukt = true;
+                        return feedback;
+                    }
+                    else
+                    {
+                        feedback.Gelukt = false;
+                        feedback.Message = "er is iets fout gegaan bij het uitvoeren van de query voor het unsubscriben";
+                        return feedback;
+                    }
+                    
+                }
+                else {
+                    feedback.Gelukt = false;
+                    feedback.Message = "Je hebt nog een schuld open staan";
+                    return feedback;
+                }
+            }
+            else
+            {
+                feedback.Gelukt = false;
+                feedback.Message = "Er is iet fout gegaan met het uitoeren van de query";
+                return feedback;
+            }
+        }
     }
 }

@@ -74,5 +74,15 @@ namespace KillerApp.Data.Repositories
         {
             return _studenthuisContext.CheckAntwoordOpDeVraag(studenenthuisID,hetAntwoord);
         }
+
+        public Bewonersaldo CheckSaldo(int studentenhuisID, int ingelogdeGebrID)
+        {
+            return _studenthuisContext.CheckSaldo(studentenhuisID, ingelogdeGebrID);
+        }
+
+        public QueryFeedback UnsubscrbeStudentenhuis(int studentenhuisID, int gebruikerID)
+        {
+          return  _studenthuisContext.UnsubscrbeStudentenhuis(studentenhuisID, gebruikerID);
+        }
     }
 }

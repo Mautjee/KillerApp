@@ -38,7 +38,7 @@ namespace View.Controllers
         {
             if (!HttpContext.Session.Keys.Contains(UserSession))
             {
-                RedirectToAction("Index", "Home");
+               return RedirectToAction("Index", "Home");
             }
             DashboardViewModel viewmodel = new DashboardViewModel();
 

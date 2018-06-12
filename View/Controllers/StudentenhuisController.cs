@@ -48,9 +48,19 @@ namespace KillerApp.View.Controllers
 
         public IActionResult ChangeStudentenhuis()
         {
+            Gebruiker gebr = GetgebruikerfromSession();
+            
+            StudentenHuis stud = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
 
-
-            return Content("Je bent geen lid meer");
+            QueryFeedback unsubscribe = studentenhuislogic.UnsubscibeStudentenhuis(stud.StudentenhuisID,gebr.GebruikerID);
+            if (unsubscribe.Gelukt)
+            {
+                return RedirectToAction("index", "Studentenhuis");
+            }
+            else
+            {
+                return Content(unsubscribe.Message);
+            }
         }
 
         public IActionResult NiewStudentenhuis()
