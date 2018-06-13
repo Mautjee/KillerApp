@@ -218,12 +218,12 @@ namespace KillerApp.Data.Contexts
                     using (SqlCommand cmd = new SqlCommand())
                     {
 
-                        string qry = $"update Table_Gebruiker_Activiteit SET StudenthuisID = @studentenhuisID, [In] = (Select Convert (date, GETDATE())) Where GebruikerID = @gebruikerID";
 
-                        cmd.CommandText = qry;
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.CommandText = "AddToNewStudentenhuis";
 
-                        cmd.Parameters.AddWithValue("@studentenhuisID", studentenhuisID);
-                        cmd.Parameters.AddWithValue("@gebruikerID", gebruikerID);
+                        cmd.Parameters.AddWithValue("@studID", studentenhuisID);
+                        cmd.Parameters.AddWithValue("@gebrID", gebruikerID);
                         cmd.Connection = conn;
 
                         conn.Open();

@@ -8,10 +8,12 @@
 <head>
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/StudentHuisJS.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 
 <div class="row">
     <div class="col-md-6">
+
         @if (!Model.checkLidVanStudentenhuis())
         {
             <h2>All Studentenhuizen</h2>
@@ -30,10 +32,12 @@
 
             <p>Weet je zeker dat je niet meer actief lid wilt zijn van dit huis druk dan op de onderstaande knop</p>
             <a asp-action="ChangeStudentenhuis" asp- class="btn btn-default">Word niet meer actief lid van dit Studentenhuis</a>
-        
+
+
         }
     </div>
     <div class="col-md-6" id="HuisDetail">
     </div>
 
 </div>
+<h2> @Html.ValidationSummary(true)</h2>

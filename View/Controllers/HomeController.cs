@@ -135,8 +135,8 @@ namespace View.Controllers
                 }
                 return RedirectToAction("Dashboard", "Home");
             }
-
-            return Content("Inlog Mislukt omdat");
+            ModelState.AddModelError(string.Empty, "Verkeerde gebruikersnaam of wachtwoord");
+            return View("index",new Gebruiker());
         }
         
         // Private methods

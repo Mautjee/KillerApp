@@ -1,4 +1,11 @@
-﻿body {
+﻿
+.validation-summary-errors li   
+{
+    list-style: none;
+    color: red;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }

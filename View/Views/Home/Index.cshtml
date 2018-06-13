@@ -18,6 +18,7 @@
                 <input class="form-control" type="password" asp-for="@Model.Wachtwoord" placeholder="Wachtwoord" />
             </div>
         </div>
+        @Html.ValidationSummary(true)
         <div class="form-group">
             <label class="control-label col-sm-3">&nbsp;</label>
             <div class="col-sm-5 input-group-btn">

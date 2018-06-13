@@ -59,7 +59,15 @@ namespace KillerApp.View.Controllers
             }
             else
             {
-                return Content(unsubscribe.Message);
+                StudentenHuisViewModel studhuisviewmodel = new StudentenHuisViewModel();
+
+                studhuisviewmodel.Ingelogdegebruiker = gebr;
+                studhuisviewmodel.huidighuis = studentenhuislogic.GetActiveStudentenhuisBijGebruiker(gebr.GebruikerID);
+
+                ModelState.AddModelError(string.Empty, "Je hebt nog een openstaant saldo zorg dat je dit aan iemand hebt afbetaald en ga verder");
+
+                return View("Index",studhuisviewmodel);
+                
             }
         }
 
