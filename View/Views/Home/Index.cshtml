@@ -1,7 +1,7 @@
 ﻿@model Model.Gebruiker
 
 <head>
-    <link href="~/css/LoginStyleSheet.css" rel="stylesheet" />
+    <link runat="server" href=@Url.Content("~/css/LoginStyleSheet.css") rel="stylesheet" />
 </head>
 <form asp-action="CheckLogin" asp-controller="Home" method="post" class="form-horizontal">
     <fieldset>

@@ -4,8 +4,11 @@
     ViewData["Title"] = "Dashboard";
 }
 <head>
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/DasboardJS.js"></script>
+    <script src=@Url.Content("~/js/jquery-3.3.1.min.js")></script>
+    <script src=@Url.Content("~/js/DasboardJS.js")></script>
+    <link rel="stylesheet" runat="server" href=@Url.Content("~/css/site.css") />
+    <link runat="server" href=@Url.Content("~/lib/bootstrap-select/dist/css/bootstrap-select.css") rel="stylesheet" />
+    <script runat="server" src=@Url.Content("~/lib/bootstrap-select/dist/js/bootstrap-select.js")></script>
 </head>
 
 <div class="container-fluid" id="DashboardDiv" name="DashboardDiv">
